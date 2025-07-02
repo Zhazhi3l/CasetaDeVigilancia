@@ -48,12 +48,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             label1.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label1.ForeColor = System.Drawing.Color.DarkGreen;
             label1.Location = new System.Drawing.Point(32, 160);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(316, 126);
+            label1.Size = new System.Drawing.Size(314, 124);
             label1.TabIndex = 5;
             label1.Text = "Bienvenido a:\r\nPuerta segura";
             // 
@@ -82,9 +81,9 @@
             this.btnSesionGuardia.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSesionGuardia.Image = global::CasetaDeVigilancia.Properties.Resources.iniciar_sesion;
             this.btnSesionGuardia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSesionGuardia.Location = new System.Drawing.Point(0, 286);
+            this.btnSesionGuardia.Location = new System.Drawing.Point(0, 355);
             this.btnSesionGuardia.Name = "btnSesionGuardia";
-            this.btnSesionGuardia.Size = new System.Drawing.Size(267, 50);
+            this.btnSesionGuardia.Size = new System.Drawing.Size(267, 85);
             this.btnSesionGuardia.TabIndex = 10;
             this.btnSesionGuardia.Text = "Sesión Guardia";
             this.btnSesionGuardia.UseVisualStyleBackColor = true;
@@ -100,9 +99,9 @@
             this.btnHistorial.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnHistorial.Image = global::CasetaDeVigilancia.Properties.Resources.historial_de_pedidos;
             this.btnHistorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistorial.Location = new System.Drawing.Point(0, 221);
+            this.btnHistorial.Location = new System.Drawing.Point(0, 270);
             this.btnHistorial.Name = "btnHistorial";
-            this.btnHistorial.Size = new System.Drawing.Size(267, 65);
+            this.btnHistorial.Size = new System.Drawing.Size(267, 85);
             this.btnHistorial.TabIndex = 9;
             this.btnHistorial.Text = "Historial de\r\nAccesos";
             this.btnHistorial.UseVisualStyleBackColor = true;
@@ -118,9 +117,9 @@
             this.btnRegistro.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRegistro.Image = global::CasetaDeVigilancia.Properties.Resources.registro;
             this.btnRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegistro.Location = new System.Drawing.Point(0, 150);
+            this.btnRegistro.Location = new System.Drawing.Point(0, 185);
             this.btnRegistro.Name = "btnRegistro";
-            this.btnRegistro.Size = new System.Drawing.Size(267, 71);
+            this.btnRegistro.Size = new System.Drawing.Size(267, 85);
             this.btnRegistro.TabIndex = 8;
             this.btnRegistro.Text = "Registro de\r\nResidentes";
             this.btnRegistro.UseVisualStyleBackColor = true;
@@ -138,7 +137,7 @@
             this.btnAcceder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAcceder.Location = new System.Drawing.Point(0, 100);
             this.btnAcceder.Name = "btnAcceder";
-            this.btnAcceder.Size = new System.Drawing.Size(267, 50);
+            this.btnAcceder.Size = new System.Drawing.Size(267, 85);
             this.btnAcceder.TabIndex = 7;
             this.btnAcceder.Text = "Acceder";
             this.btnAcceder.UseVisualStyleBackColor = true;
