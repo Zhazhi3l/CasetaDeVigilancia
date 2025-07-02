@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\RegistroResidentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\RegistroResidentes.Designer.cs">
+      <DependentUpon>RegistroResidentes.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="src\AccesoFraccionamiento.resx">
       <DependentUpon>AccesoFraccionamiento.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +82,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="src\RegistroResidentes.resx">
+      <DependentUpon>RegistroResidentes.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

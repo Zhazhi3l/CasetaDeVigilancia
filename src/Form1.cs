@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasetaDeVigilancia.src;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace CasetaDeVigilancia
 {
-    public partial class Menu : Form
+    public partial class frmMenu : Form
     {
-        public Menu()
+        public frmMenu()
         {
             InitializeComponent();
             cargarImagBotones();
@@ -41,6 +42,13 @@ namespace CasetaDeVigilancia
             redimensionada = new Bitmap(original, new Size(32, 32));
             btnSesionGuardia.Image = redimensionada;
             btnSesionGuardia.ImageAlign = ContentAlignment.MiddleLeft;
+        }
+
+        private void btnRegistro_Click(object sender, EventArgs e)
+        {
+            frmRegistroResidentes vntResidentes = new frmRegistroResidentes();
+            vntResidentes.Enabled = true;
+            vntResidentes.ShowDialog();        
         }
     }
 }
