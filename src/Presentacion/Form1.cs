@@ -48,7 +48,7 @@ namespace CasetaDeVigilancia
         {
             frmRegistroResidentes vntResidentes = new frmRegistroResidentes();
             vntResidentes.Enabled = true;
-            vntResidentes.ShowDialog();        
+            vntResidentes.ShowDialog();
         }
     }
 }

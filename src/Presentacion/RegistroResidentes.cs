@@ -21,5 +21,20 @@ namespace CasetaDeVigilancia.src
         {
             this.Close();
         }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                /*&& txtNumTel.TextLength<=10*/)
+            {
+                e.Handled = true;
+
+            }
+        }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
