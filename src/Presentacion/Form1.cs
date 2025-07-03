@@ -47,8 +47,15 @@ namespace CasetaDeVigilancia
         private void btnRegistro_Click(object sender, EventArgs e)
         {
             frmRegistroResidentes vntResidentes = new frmRegistroResidentes();
-            vntResidentes.Enabled = true;
+            
             vntResidentes.ShowDialog();
+        }
+
+        private void btnAcceder_Click(object sender, EventArgs e)
+        {
+            frmAccesoFraccionamiento accFracc = new frmAccesoFraccionamiento();
+            
+            accFracc.ShowDialog();
         }
     }
 }

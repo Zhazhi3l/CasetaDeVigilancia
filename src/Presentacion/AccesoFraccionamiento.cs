@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace CasetaDeVigilancia.src
 {
-    public partial class AccesoFraccionamiento : Form
+    public partial class frmAccesoFraccionamiento : Form
     {
-        public AccesoFraccionamiento()
+        public frmAccesoFraccionamiento()
         {
             InitializeComponent();
+            Image original = Properties.Resources.flecha_izquierda; Image redimensionada = new Bitmap(original, new Size(25, 25)); btnRegresar.Image = redimensionada; btnRegresar.ImageAlign = ContentAlignment.MiddleLeft;
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

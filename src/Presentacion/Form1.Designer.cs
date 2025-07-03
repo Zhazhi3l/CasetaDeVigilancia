@@ -142,6 +142,7 @@
             this.btnAcceder.TabIndex = 7;
             this.btnAcceder.Text = "Acceder";
             this.btnAcceder.UseVisualStyleBackColor = true;
+            this.btnAcceder.Click += new System.EventHandler(this.btnAcceder_Click);
             // 
             // panel2
             // 
