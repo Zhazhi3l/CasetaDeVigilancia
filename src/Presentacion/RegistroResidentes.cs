@@ -15,6 +15,7 @@ namespace CasetaDeVigilancia.src
         public frmRegistroResidentes()
         {
             InitializeComponent();
+            Image original = Properties.Resources.flecha_izquierda;Image redimensionada = new Bitmap(original, new Size(25, 25));btnRegresar.Image = redimensionada;btnRegresar.ImageAlign = ContentAlignment.MiddleLeft;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -32,9 +33,12 @@ namespace CasetaDeVigilancia.src
             }
         }
 
-        private void btnSalir_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            if (true)
+            {
 
+            }
         }
     }
 }

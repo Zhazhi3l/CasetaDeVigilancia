@@ -30,7 +30,11 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnRegresar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtNumTel = new System.Windows.Forms.TextBox();
@@ -48,14 +52,28 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtApPaty = new System.Windows.Forms.TextBox();
             this.txtNombres = new System.Windows.Forms.TextBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtContrasena = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.btnCrearUsuario = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dgvListaResidentes = new System.Windows.Forms.DataGridView();
+            this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbxDireccion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumeroCalle)).BeginInit();
             this.gbxNombre.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaResidentes)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,15 +88,42 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.panel2.Controls.Add(this.panel5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 40);
             this.panel2.TabIndex = 5;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnRegresar);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(89, 40);
+            this.panel5.TabIndex = 0;
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnRegresar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRegresar.FlatAppearance.BorderSize = 0;
+            this.btnRegresar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegresar.Image = global::CasetaDeVigilancia.Properties.Resources.flecha_izquierda;
+            this.btnRegresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegresar.Location = new System.Drawing.Point(0, 0);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(89, 40);
+            this.btnRegresar.TabIndex = 0;
+            this.btnRegresar.UseVisualStyleBackColor = false;
+            this.btnRegresar.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MintCream;
+            this.panel3.Controls.Add(this.btnCrearUsuario);
+            this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Controls.Add(this.gbxDireccion);
@@ -89,15 +134,40 @@
             this.panel3.Size = new System.Drawing.Size(800, 391);
             this.panel3.TabIndex = 6;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dgvListaResidentes);
+            this.panel4.Controls.Add(this.panel7);
+            this.panel4.Controls.Add(this.panel6);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(600, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 391);
+            this.panel4.TabIndex = 8;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.MintCream;
+            this.btnCancelar.Location = new System.Drawing.Point(0, 0);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(200, 65);
+            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtNumTel);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtCorreo);
-            this.groupBox1.Location = new System.Drawing.Point(12, 216);
+            this.groupBox1.Location = new System.Drawing.Point(46, 219);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(242, 165);
+            this.groupBox1.Size = new System.Drawing.Size(242, 152);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Contacto";
@@ -105,7 +175,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 82);
+            this.label7.Location = new System.Drawing.Point(6, 77);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(125, 16);
             this.label7.TabIndex = 9;
@@ -113,15 +183,15 @@
             // 
             // txtNumTel
             // 
-            this.txtNumTel.Location = new System.Drawing.Point(6, 101);
+            this.txtNumTel.Location = new System.Drawing.Point(6, 96);
             this.txtNumTel.Name = "txtNumTel";
-            this.txtNumTel.Size = new System.Drawing.Size(192, 22);
+            this.txtNumTel.Size = new System.Drawing.Size(230, 22);
             this.txtNumTel.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 30);
+            this.label6.Location = new System.Drawing.Point(6, 25);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(117, 16);
             this.label6.TabIndex = 7;
@@ -129,9 +199,9 @@
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(6, 49);
+            this.txtCorreo.Location = new System.Drawing.Point(6, 44);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(192, 22);
+            this.txtCorreo.Size = new System.Drawing.Size(230, 22);
             this.txtCorreo.TabIndex = 0;
             // 
             // gbxDireccion
@@ -140,7 +210,7 @@
             this.gbxDireccion.Controls.Add(this.label5);
             this.gbxDireccion.Controls.Add(this.label4);
             this.gbxDireccion.Controls.Add(this.txtCalle);
-            this.gbxDireccion.Location = new System.Drawing.Point(274, 10);
+            this.gbxDireccion.Location = new System.Drawing.Point(308, 13);
             this.gbxDireccion.Name = "gbxDireccion";
             this.gbxDireccion.Size = new System.Drawing.Size(242, 150);
             this.gbxDireccion.TabIndex = 6;
@@ -150,8 +220,13 @@
             // nudNumeroCalle
             // 
             this.nudNumeroCalle.Location = new System.Drawing.Point(6, 100);
+            this.nudNumeroCalle.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.nudNumeroCalle.Name = "nudNumeroCalle";
-            this.nudNumeroCalle.Size = new System.Drawing.Size(80, 22);
+            this.nudNumeroCalle.Size = new System.Drawing.Size(109, 22);
             this.nudNumeroCalle.TabIndex = 1;
             // 
             // label5
@@ -159,9 +234,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 81);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 16);
+            this.label5.Size = new System.Drawing.Size(109, 16);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Numero";
+            this.label5.Text = "Numero de Casa";
             // 
             // label4
             // 
@@ -187,7 +262,7 @@
             this.gbxNombre.Controls.Add(this.label1);
             this.gbxNombre.Controls.Add(this.txtApPaty);
             this.gbxNombre.Controls.Add(this.txtNombres);
-            this.gbxNombre.Location = new System.Drawing.Point(12, 10);
+            this.gbxNombre.Location = new System.Drawing.Point(46, 13);
             this.gbxNombre.Name = "gbxNombre";
             this.gbxNombre.Size = new System.Drawing.Size(242, 194);
             this.gbxNombre.TabIndex = 5;
@@ -242,26 +317,102 @@
             this.txtNombres.Size = new System.Drawing.Size(230, 22);
             this.txtNombres.TabIndex = 0;
             // 
-            // btnCancelar
+            // groupBox2
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(47, 338);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(117, 45);
-            this.btnCancelar.TabIndex = 4;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnSalir_Click_1);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.txtContrasena);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.txtUsuario);
+            this.groupBox2.Location = new System.Drawing.Point(308, 177);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(242, 131);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Inicio de Sesión";
             // 
-            // panel4
+            // label8
             // 
-            this.panel4.Controls.Add(this.btnCancelar);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(600, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 391);
-            this.panel4.TabIndex = 8;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 77);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(76, 16);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Contraseña";
+            // 
+            // txtContrasena
+            // 
+            this.txtContrasena.Location = new System.Drawing.Point(6, 96);
+            this.txtContrasena.Name = "txtContrasena";
+            this.txtContrasena.Size = new System.Drawing.Size(230, 22);
+            this.txtContrasena.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 25);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 16);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Usuario";
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Location = new System.Drawing.Point(6, 44);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(230, 22);
+            this.txtUsuario.TabIndex = 0;
+            // 
+            // btnCrearUsuario
+            // 
+            this.btnCrearUsuario.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnCrearUsuario.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearUsuario.ForeColor = System.Drawing.Color.MintCream;
+            this.btnCrearUsuario.Location = new System.Drawing.Point(308, 326);
+            this.btnCrearUsuario.Name = "btnCrearUsuario";
+            this.btnCrearUsuario.Size = new System.Drawing.Size(242, 45);
+            this.btnCrearUsuario.TabIndex = 5;
+            this.btnCrearUsuario.Text = "Crear Usuario";
+            this.btnCrearUsuario.UseVisualStyleBackColor = false;
+            this.btnCrearUsuario.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btnCancelar);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 326);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(200, 65);
+            this.panel6.TabIndex = 5;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(200, 59);
+            this.panel7.TabIndex = 6;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(17, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(175, 28);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Lista de Residentes";
+            // 
+            // dgvListaResidentes
+            // 
+            this.dgvListaResidentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaResidentes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvListaResidentes.Location = new System.Drawing.Point(0, 59);
+            this.dgvListaResidentes.Name = "dgvListaResidentes";
+            this.dgvListaResidentes.RowHeadersWidth = 51;
+            this.dgvListaResidentes.RowTemplate.Height = 24;
+            this.dgvListaResidentes.Size = new System.Drawing.Size(200, 267);
+            this.dgvListaResidentes.TabIndex = 7;
             // 
             // frmRegistroResidentes
             // 
@@ -273,7 +424,10 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmRegistroResidentes";
             this.Text = "Registro de Residentes";
+            this.panel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.gbxDireccion.ResumeLayout(false);
@@ -281,7 +435,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudNumeroCalle)).EndInit();
             this.gbxNombre.ResumeLayout(false);
             this.gbxNombre.PerformLayout();
-            this.panel4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaResidentes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -310,5 +469,17 @@
         private System.Windows.Forms.TextBox txtNombres;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtContrasena;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.Button btnCrearUsuario;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.DataGridView dgvListaResidentes;
+        private System.Windows.Forms.Label label10;
     }
 }

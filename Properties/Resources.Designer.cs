@@ -63,6 +63,16 @@ namespace CasetaDeVigilancia.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap flecha_izquierda {
+            get {
+                object obj = ResourceManager.GetObject("flecha-izquierda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap historial_de_pedidos {
             get {
                 object obj = ResourceManager.GetObject("historial-de-pedidos", resourceCulture);

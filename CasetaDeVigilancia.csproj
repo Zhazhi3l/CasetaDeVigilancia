@@ -36,8 +36,15 @@
     <Reference Include="BIbliotecaCURP">
       <HintPath>..\BIbliotecaCURP\bin\Debug\BIbliotecaCURP.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +56,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="historialacceso.cs">
+      <DependentUpon>ModeloPruebasMySQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="invitado.cs">
+      <DependentUpon>ModeloPruebasMySQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloPruebasMySQL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloPruebasMySQL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloPruebasMySQL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloPruebasMySQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloPruebasMySQL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloPruebasMySQL.edmx</DependentUpon>
+    </Compile>
     <Compile Include="src\Presentacion\AccesoFraccionamiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +97,9 @@
     <Compile Include="src\Presentacion\RegistroResidentes.Designer.cs">
       <DependentUpon>RegistroResidentes.cs</DependentUpon>
     </Compile>
+    <Compile Include="usuario.cs">
+      <DependentUpon>ModeloPruebasMySQL.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="src\Presentacion\AccesoFraccionamiento.resx">
       <DependentUpon>AccesoFraccionamiento.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +119,14 @@
     <EmbeddedResource Include="src\Presentacion\RegistroResidentes.resx">
       <DependentUpon>RegistroResidentes.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="ModeloPruebasMySQL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloPruebasMySQL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModeloPruebasMySQL.edmx.diagram">
+      <DependentUpon>ModeloPruebasMySQL.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -112,6 +151,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icons\iniciar-sesion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\flecha-izquierda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModeloPruebasMySQL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModeloPruebasMySQL.Context.cs</LastGenOutput>
+      <DependentUpon>ModeloPruebasMySQL.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModeloPruebasMySQL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloPruebasMySQL.edmx</DependentUpon>
+      <LastGenOutput>ModeloPruebasMySQL.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
