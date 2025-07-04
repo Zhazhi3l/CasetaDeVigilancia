@@ -15,6 +15,9 @@ namespace CasetaDeVigilancia.src
 {
     public partial class frmAccesoFraccionamiento : Form
     {
+        private int residenteID;
+        private int invitadoID;
+        private bool esInvitado;
         public frmAccesoFraccionamiento()
         {
             InitializeComponent();
@@ -69,7 +72,8 @@ namespace CasetaDeVigilancia.src
                 return;
             }
 
-            // 2) Si no hay invitado, buscamos un residente
+            // 2) Si no hay invitado, buscamos un residente,
+            // si cambia la BD cambiar el where
             var dtRes = DbHelper.ExecuteQuery(@"
                 SELECT UsuarioID, Nombre, ApellidoPaterno, ApellidoMaterno
                 FROM Usuario
@@ -81,13 +85,13 @@ namespace CasetaDeVigilancia.src
             {
                 var row = dtRes.Rows[0];
                 // Cargo datos comunes
-                txtNombre.Text = row["Nombre"].ToString();
-                txtApellidoP.Text = row["ApellidoPaterno"].ToString();
-                txtApellidoM.Text = row["ApellidoMaterno"].ToString();
+                lblNombre.Text = row["Nombre"].ToString();
+                lblApellPaterno.Text = row["ApellidoPaterno"].ToString();
+                lblApellMaterno.Text = row["ApellidoMaterno"].ToString();
                 panelComun.Visible = true;
 
                 // Cargo datos de residente
-                txtResidenteID.Text = row["UsuarioID"].ToString();
+                lblIDResidente.Text = row["UsuarioID"].ToString();
                 panelResidente.Visible = true;
 
                 // Guardo estado
@@ -95,6 +99,7 @@ namespace CasetaDeVigilancia.src
                 esInvitado = false;
                 return;
             }
+            MessageBox.Show("Código no reconocido.");
         }
 
         private void txtCodigoQr_TextChanged(object sender, EventArgs e)
