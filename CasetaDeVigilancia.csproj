@@ -205,6 +205,12 @@
     <Compile Include="src\Presentacion\AccesoFraccionamiento.Designer.cs">
       <DependentUpon>AccesoFraccionamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Presentacion\HistorialAcceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Presentacion\HistorialAcceso.Designer.cs">
+      <DependentUpon>HistorialAcceso.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Presentacion\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
