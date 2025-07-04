@@ -195,7 +195,6 @@
     </Compile>
     <Compile Include="src\Datos\Modelos\HistorialAcceso.cs" />
     <Compile Include="src\Datos\Modelos\Invitado.cs" />
-    <Compile Include="src\Datos\Modelos\Persona.cs" />
     <Compile Include="src\Datos\Modelos\Residente.cs" />
     <Compile Include="src\Datos\FraccionamientoContext.cs" />
     <Compile Include="src\Presentacion\AccesoFraccionamiento.cs">
