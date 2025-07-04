@@ -1,31 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CasetaDeVigilancia.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="connectionStrings" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;name="FraccionamientoContext"
-         providerName="System.Data.SqlClient"
-         connectionString="Server=chuyserver.database.windows.net;
-                           Database=Poyecto_Topicos;
-                           User ID=rootchuy@chuyserver;
-                           Password=root12345$;
-                           Encrypt=True;
-                           TrustServerCertificate=False;
-                           Connection Timeout=60;
-                           MultipleActiveResultSets=True;" &lt;/ConnectionString&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">name="FraccionamientoContext"
-         providerName="System.Data.SqlClient"
-         connectionString="Server=chuyserver.database.windows.net;
-                           Database=Poyecto_Topicos;
-                           User ID=rootchuy@chuyserver;
-                           Password=root12345$;
-                           Encrypt=True;
-                           TrustServerCertificate=False;
-                           Connection Timeout=60;
-                           MultipleActiveResultSets=True;" </Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

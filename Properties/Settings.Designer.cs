@@ -22,24 +22,5 @@ namespace CasetaDeVigilancia.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"name=""FraccionamientoContext""
-         providerName=""System.Data.SqlClient""
-         connectionString=""Server=chuyserver.database.windows.net;
-                           Database=Poyecto_Topicos;
-                           User ID=rootchuy@chuyserver;
-                           Password=root12345$;
-                           Encrypt=True;
-                           TrustServerCertificate=False;
-                           Connection Timeout=60;
-                           MultipleActiveResultSets=True;"" ")]
-        public string connectionStrings {
-            get {
-                return ((string)(this["connectionStrings"]));
-            }
-        }
     }
 }

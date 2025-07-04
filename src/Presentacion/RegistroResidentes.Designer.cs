@@ -57,10 +57,10 @@
             this.txtCalle = new System.Windows.Forms.TextBox();
             this.gbxNombre = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtApMati = new System.Windows.Forms.TextBox();
+            this.txtApllMat = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtApPaty = new System.Windows.Forms.TextBox();
+            this.txtApllPat = new System.Windows.Forms.TextBox();
             this.txtNombres = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
@@ -355,10 +355,10 @@
             // gbxNombre
             // 
             this.gbxNombre.Controls.Add(this.label3);
-            this.gbxNombre.Controls.Add(this.txtApMati);
+            this.gbxNombre.Controls.Add(this.txtApllMat);
             this.gbxNombre.Controls.Add(this.label2);
             this.gbxNombre.Controls.Add(this.label1);
-            this.gbxNombre.Controls.Add(this.txtApPaty);
+            this.gbxNombre.Controls.Add(this.txtApllPat);
             this.gbxNombre.Controls.Add(this.txtNombres);
             this.gbxNombre.Location = new System.Drawing.Point(48, 16);
             this.gbxNombre.Name = "gbxNombre";
@@ -376,12 +376,12 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Apellido Materno";
             // 
-            // txtApMati
+            // txtApllMat
             // 
-            this.txtApMati.Location = new System.Drawing.Point(6, 153);
-            this.txtApMati.Name = "txtApMati";
-            this.txtApMati.Size = new System.Drawing.Size(230, 22);
-            this.txtApMati.TabIndex = 2;
+            this.txtApllMat.Location = new System.Drawing.Point(6, 153);
+            this.txtApllMat.Name = "txtApllMat";
+            this.txtApllMat.Size = new System.Drawing.Size(230, 22);
+            this.txtApllMat.TabIndex = 2;
             // 
             // label2
             // 
@@ -401,12 +401,12 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Nombre(s)";
             // 
-            // txtApPaty
+            // txtApllPat
             // 
-            this.txtApPaty.Location = new System.Drawing.Point(6, 100);
-            this.txtApPaty.Name = "txtApPaty";
-            this.txtApPaty.Size = new System.Drawing.Size(230, 22);
-            this.txtApPaty.TabIndex = 1;
+            this.txtApllPat.Location = new System.Drawing.Point(6, 100);
+            this.txtApllPat.Name = "txtApllPat";
+            this.txtApllPat.Size = new System.Drawing.Size(230, 22);
+            this.txtApllPat.TabIndex = 1;
             // 
             // txtNombres
             // 
@@ -437,6 +437,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmRegistroResidentes";
             this.Text = "Registro de Residentes";
+            this.Load += new System.EventHandler(this.frmRegistroResidentes_Load);
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -490,10 +491,10 @@
         private System.Windows.Forms.TextBox txtCalle;
         private System.Windows.Forms.GroupBox gbxNombre;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtApMati;
+        private System.Windows.Forms.TextBox txtApllMat;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtApPaty;
+        private System.Windows.Forms.TextBox txtApllPat;
         private System.Windows.Forms.TextBox txtNombres;
         private System.Windows.Forms.Label label10;
     }
