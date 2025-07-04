@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CasetaDeVigilancia.src.Datos;
+using CasetaDeVigilancia.src.Datos.Datos.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,6 +41,25 @@ namespace CasetaDeVigilancia.src
             {
 
             }
+        }
+
+        private void btnCrearUsuario_Click(object sender, EventArgs e)
+        {
+            var nuevo = new Residente
+            {
+                Nombre = txtNombres.Text,
+                Apellidos = txtApPaty.Text + txtApPaty,
+                NumeroCasa = txtNumeroCasa.Text
+            };
+
+            using (var ctx = new FraccionamientoContext())
+            {
+                ctx.Residentes.Add(nuevo);
+                ctx.SaveChanges();
+            }
+
+            MessageBox.Show("Residente registrado");
+            this.Close();
         }
     }
 }

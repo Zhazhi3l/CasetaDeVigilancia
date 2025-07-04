@@ -5,29 +5,38 @@ namespace CasetaDeVigilancia.src.Datos
 {
     public class FraccionamientoContext : DbContext
     {
-        public FraccionamientoContext() : base("name=FraccionamientoContext") { }
+        public FraccionamientoContext()
+            : base("name=FraccionamientoContext") { }
 
         public DbSet<Residente> Residentes { get; set; }
         public DbSet<Invitado> Invitados { get; set; }
-        public DbSet<HistorialAcceso> HistorialAccesos { get; set; }
+        public DbSet<HistorialAcceso> Historiales { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<HistorialAcceso>()
-                        .ToTable("Historial");
+            // Mapear tablas
+            modelBuilder.Entity<Residente>().ToTable("Usuario");
+            modelBuilder.Entity<Invitado>().ToTable("Invitado");
+            modelBuilder.Entity<HistorialAcceso>().ToTable("Historial");
 
-            // Historial → Usuario
-            modelBuilder.Entity<HistorialAcceso>()
-                        .HasRequired(h => h.Usuario)
-                        .WithMany(u => u.Historiales)
+            // Residente → Invitados (1:N)
+            modelBuilder.Entity<Residente>()
+                        .HasMany(r => r.Invitados)
+                        .WithRequired(i => i.Residente)
+                        .HasForeignKey(i => i.UsuarioID);
+
+            // Residente → Historiales (1:N)
+            modelBuilder.Entity<Residente>()
+                        .HasMany(r => r.Historiales)
+                        .WithRequired(h => h.Residente)
                         .HasForeignKey(h => h.UsuarioID);
 
-            // Historial → Invitado
+            // Historial → Invitado (N:1)
             modelBuilder.Entity<HistorialAcceso>()
                         .HasRequired(h => h.Invitado)
-                        .WithMany()   // Invitado no necesita colecc. de historial, o define una si quieres
+                        .WithMany()    // o define colección en Invitado si lo prefieres
                         .HasForeignKey(h => h.InvitadoID);
         }
     }
