@@ -37,29 +37,32 @@ namespace CasetaDeVigilancia.src
             }
         }
 
+        /**
+         * Crea un nuevo residente en la base de datos.
+         */
         private void btnCrearUsuario_Click(object sender, EventArgs e)
         {
             // Preparamos SQL parametrizado para evitar inyecciones SQL
             if (validarCasillas())
             {
                 string sql = @"
-                INSERT INTO Usuario
+                INSERT INTO Residente
                     (Nombre, ApellidoPaterno, ApellidoMaterno,
                      NumeroCasa, Calle, Telefono, Correo, FechaRegistro)
                 VALUES
-                    (@nombre, @apellidopaterno, @appelidomaterno, @numerocasa, @calle, @telefono, @correo, @fechaReg)";
+                    (@nombre, @apellidopaterno, @apellidomaterno, @numerocasa, @calle, @telefono, @correo, @fecharegistro)";
 
                 // Creación de parametros SQL
                 var parametros = new[]
                 {
                     new SqlParameter("@nombre",             txtNombres.Text),
                     new SqlParameter("@apellidopaterno",    txtApllPat.Text),
-                    new SqlParameter("@appelidomaterno",    txtApllMat.Text),
+                    new SqlParameter("@apellidomaterno",    txtApllMat.Text),
                     new SqlParameter("@numerocasa",         nudNumeroCalle.Value),
                     new SqlParameter("@calle",              txtCalle.Text),
                     new SqlParameter("@telefono",           txtNumTel.Text),
                     new SqlParameter("@correo",             txtCorreo.Text),
-                    new SqlParameter("@fechaReg",           DateTime.Now)
+                    new SqlParameter("@fecharegistro",      DateTime.Now)
                 };
 
                 // Ejecutamos la consulta
@@ -81,6 +84,25 @@ namespace CasetaDeVigilancia.src
                 this.Close();
             }
         }
+
+        /**         
+         * Método que limpia los campos del formulario de registro de residentes.
+         */
+        private void limpiarCampos()
+        {
+            txtNombres.Clear();
+            txtApllPat.Clear();
+            txtApllMat.Clear();
+            nudNumeroCalle.Value = 0;
+            txtCalle.Clear();
+            txtNumTel.Clear();
+            txtCorreo.Clear();
+        }
+
+        /**
+         * Método que valida los campos del formulario de registro de residentes.
+         * Retorna true si todos los campos son válidos, false en caso contrario.
+         */
         private bool validarCasillas()
         {
             StringBuilder errores = new StringBuilder();
@@ -112,11 +134,19 @@ namespace CasetaDeVigilancia.src
             return true;
         }
 
+        /**
+         * Evento que se ejecuta al cargar el formulario de registro de residentes.
+         * Carga la lista de residentes en el DataGridView.
+         */
         private void frmRegistroResidentes_Load(object sender, EventArgs e)
         {
             CargarResidentesAsync();
         }
 
+        /**
+         * Método asíncrono que carga la lista de residentes desde la base de datos
+         * y la muestra en el DataGridView.
+         */
         private async Task CargarResidentesAsync()
         {
             // Definir la consulta SQL
