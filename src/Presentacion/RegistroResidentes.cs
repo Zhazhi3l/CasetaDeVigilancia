@@ -114,6 +114,11 @@ namespace CasetaDeVigilancia.src
 
         private void frmRegistroResidentes_Load(object sender, EventArgs e)
         {
+            CargarResidentesAsync();
+        }
+
+        private async Task CargarResidentesAsync()
+        {
             // Definir la consulta SQL
             string sql = @"
                 SELECT
@@ -126,16 +131,21 @@ namespace CasetaDeVigilancia.src
                     Telefono,
                     Correo,
                     FechaRegistro
-                FROM Usuario";
-            // 2) Obtenemos un DataTable con los datos:
-            DataTable dt = DbHelper.ExecuteQuery(sql);
+                FROM Residente";
 
-            // 3) Asignamos al DataGridView:
-            dgvListaResidentes.DataSource = dt;
+            // Ejecutar la consulta en un hilo de fondo para no bloquear la UI
+            DataTable dt = await Task.Run(() => DbHelper.ExecuteQuery(sql));
 
-            // 4) Ajustes estéticos (opcional):
-            dgvListaResidentes.Columns["ResidenteID"].Visible = false;
-
+            // Asignar el resultado al DataGridView en el hilo de la UI
+            if (dgvListaResidentes.InvokeRequired)
+            {
+                dgvListaResidentes.Invoke(new Action(() => dgvListaResidentes.DataSource = dt));
+            }
+            else
+            {
+                dgvListaResidentes.DataSource = dt;
+            }
         }
+
     }
 }

@@ -33,11 +33,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.dgvListaResidentes = new System.Windows.Forms.DataGridView();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnCrearUsuario = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -62,20 +57,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtApllPat = new System.Windows.Forms.TextBox();
             this.txtNombres = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dgvListaResidentes = new System.Windows.Forms.DataGridView();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaResidentes)).BeginInit();
-            this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbxDireccion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumeroCalle)).BeginInit();
             this.gbxNombre.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaResidentes)).BeginInit();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -132,60 +132,6 @@
             this.panel3.Size = new System.Drawing.Size(800, 391);
             this.panel3.TabIndex = 6;
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.dgvListaResidentes);
-            this.panel4.Controls.Add(this.panel7);
-            this.panel4.Controls.Add(this.panel6);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(600, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 391);
-            this.panel4.TabIndex = 8;
-            // 
-            // dgvListaResidentes
-            // 
-            this.dgvListaResidentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaResidentes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvListaResidentes.Location = new System.Drawing.Point(0, 59);
-            this.dgvListaResidentes.Name = "dgvListaResidentes";
-            this.dgvListaResidentes.RowHeadersWidth = 51;
-            this.dgvListaResidentes.RowTemplate.Height = 24;
-            this.dgvListaResidentes.Size = new System.Drawing.Size(200, 267);
-            this.dgvListaResidentes.TabIndex = 7;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.label10);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(200, 59);
-            this.panel7.TabIndex = 6;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.btnCancelar);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 326);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(200, 65);
-            this.panel6.TabIndex = 5;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.MintCream;
-            this.btnCancelar.Location = new System.Drawing.Point(0, 0);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(200, 65);
-            this.btnCancelar.TabIndex = 4;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.btnCrearUsuario);
@@ -196,7 +142,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(600, 391);
+            this.panel8.Size = new System.Drawing.Size(572, 391);
             this.panel8.TabIndex = 9;
             // 
             // btnCrearUsuario
@@ -204,7 +150,7 @@
             this.btnCrearUsuario.BackColor = System.Drawing.Color.MediumAquamarine;
             this.btnCrearUsuario.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrearUsuario.ForeColor = System.Drawing.Color.MintCream;
-            this.btnCrearUsuario.Location = new System.Drawing.Point(310, 329);
+            this.btnCrearUsuario.Location = new System.Drawing.Point(296, 329);
             this.btnCrearUsuario.Name = "btnCrearUsuario";
             this.btnCrearUsuario.Size = new System.Drawing.Size(242, 45);
             this.btnCrearUsuario.TabIndex = 11;
@@ -218,7 +164,7 @@
             this.groupBox2.Controls.Add(this.txtContrasena);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtUsuario);
-            this.groupBox2.Location = new System.Drawing.Point(310, 180);
+            this.groupBox2.Location = new System.Drawing.Point(296, 180);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(242, 131);
             this.groupBox2.TabIndex = 15;
@@ -263,7 +209,7 @@
             this.groupBox1.Controls.Add(this.txtNumTel);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtCorreo);
-            this.groupBox1.Location = new System.Drawing.Point(48, 222);
+            this.groupBox1.Location = new System.Drawing.Point(34, 222);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(242, 152);
             this.groupBox1.TabIndex = 14;
@@ -308,7 +254,7 @@
             this.gbxDireccion.Controls.Add(this.label5);
             this.gbxDireccion.Controls.Add(this.label4);
             this.gbxDireccion.Controls.Add(this.txtCalle);
-            this.gbxDireccion.Location = new System.Drawing.Point(310, 16);
+            this.gbxDireccion.Location = new System.Drawing.Point(296, 16);
             this.gbxDireccion.Name = "gbxDireccion";
             this.gbxDireccion.Size = new System.Drawing.Size(242, 150);
             this.gbxDireccion.TabIndex = 13;
@@ -360,7 +306,7 @@
             this.gbxNombre.Controls.Add(this.label1);
             this.gbxNombre.Controls.Add(this.txtApllPat);
             this.gbxNombre.Controls.Add(this.txtNombres);
-            this.gbxNombre.Location = new System.Drawing.Point(48, 16);
+            this.gbxNombre.Location = new System.Drawing.Point(34, 16);
             this.gbxNombre.Name = "gbxNombre";
             this.gbxNombre.Size = new System.Drawing.Size(242, 194);
             this.gbxNombre.TabIndex = 12;
@@ -415,17 +361,70 @@
             this.txtNombres.Size = new System.Drawing.Size(230, 22);
             this.txtNombres.TabIndex = 0;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dgvListaResidentes);
+            this.panel4.Controls.Add(this.panel7);
+            this.panel4.Controls.Add(this.panel6);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(572, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(228, 391);
+            this.panel4.TabIndex = 8;
+            // 
+            // dgvListaResidentes
+            // 
+            this.dgvListaResidentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaResidentes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvListaResidentes.Location = new System.Drawing.Point(0, 59);
+            this.dgvListaResidentes.Name = "dgvListaResidentes";
+            this.dgvListaResidentes.RowHeadersWidth = 51;
+            this.dgvListaResidentes.RowTemplate.Height = 24;
+            this.dgvListaResidentes.Size = new System.Drawing.Size(228, 267);
+            this.dgvListaResidentes.TabIndex = 7;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(228, 59);
+            this.panel7.TabIndex = 6;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(0, 0);
+            this.label10.Location = new System.Drawing.Point(21, 16);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(175, 28);
             this.label10.TabIndex = 1;
             this.label10.Text = "Lista de Residentes";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btnCancelar);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 326);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(228, 65);
+            this.panel6.TabIndex = 5;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.MintCream;
+            this.btnCancelar.Location = new System.Drawing.Point(0, 0);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(228, 65);
+            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmRegistroResidentes
             // 
@@ -435,17 +434,14 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmRegistroResidentes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Residentes";
             this.Load += new System.EventHandler(this.frmRegistroResidentes_Load);
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaResidentes)).EndInit();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel6.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -456,6 +452,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudNumeroCalle)).EndInit();
             this.gbxNombre.ResumeLayout(false);
             this.gbxNombre.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaResidentes)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

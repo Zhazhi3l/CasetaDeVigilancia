@@ -62,11 +62,13 @@ namespace CasetaDeVigilancia.src
                 lblEstatus.Text = row["Estatus"].ToString();
                 panelInvitado.Visible = true;
 
-                // Guardo estado
+                // Guardo estado 
+                /*
                 invitadoID = (int)row["InvitadoID"];
                 residenteID = (int)row["ResidenteID"];
                 esInvitado = true;
                 return;
+                */
             }
 
             // 2) Si no hay invitado, buscamos un residente
@@ -76,7 +78,7 @@ namespace CasetaDeVigilancia.src
                 WHERE CodigoQr = @cod",  // o WHERE UsuarioID=@cod
                         new SqlParameter("@cod", codigo)
             );
-
+            /*
             if (dtRes.Rows.Count > 0)
             {
                 var row = dtRes.Rows[0];
@@ -95,7 +97,9 @@ namespace CasetaDeVigilancia.src
                 esInvitado = false;
                 return;
             }
+            */
         }
+            
 
         private void txtCodigoQr_TextChanged(object sender, EventArgs e)
         {
