@@ -32,7 +32,7 @@ namespace CasetaDeVigilancia.src
          */
         private void btnCrearUsuario_Click(object sender, EventArgs e)
         {
-            if (ResidenteYaExiste(txtNombres.Text, txtApllPat.Text, txtApllMat.Text)) /*, (int)nudNumeroCalle.Value)*/ // Comentado porque no se determina aún si habitan más personas en la misma casa.
+            if (ResidenteYaExiste(txtNombres.Text.Trim(), txtApllPat.Text.Trim(), txtApllMat.Text.Trim())) /*, (int)nudNumeroCalle.Value)*/
             {
                 MessageBox.Show("Este residente ya está registrado.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -51,13 +51,13 @@ namespace CasetaDeVigilancia.src
                 // Creación de parametros SQL
                 var parametros = new[]
                 {
-                    new SqlParameter("@nombre",             txtNombres.Text),
-                    new SqlParameter("@apellidopaterno",    txtApllPat.Text),
-                    new SqlParameter("@apellidomaterno",    txtApllMat.Text),
+                    new SqlParameter("@nombre",             txtNombres.Text.Trim()),
+                    new SqlParameter("@apellidopaterno",    txtApllPat.Text.Trim()),
+                    new SqlParameter("@apellidomaterno",    txtApllMat.Text.Trim()),
                     new SqlParameter("@numerocasa",         nudNumeroCalle.Value),
-                    new SqlParameter("@calle",              txtCalle.Text),
-                    new SqlParameter("@telefono",           txtNumTel.Text),
-                    new SqlParameter("@correo",             txtCorreo.Text),
+                    new SqlParameter("@calle",              txtCalle.Text.Trim()),
+                    new SqlParameter("@telefono",           txtNumTel.Text.Trim()),
+                    new SqlParameter("@correo",             txtCorreo.Text.Trim()),
                     new SqlParameter("@fecharegistro",      DateTime.Now)
                 };
 
@@ -98,20 +98,19 @@ namespace CasetaDeVigilancia.src
                 WHERE 
                     Nombre = @nombre AND 
                     ApellidoPaterno = @apPat AND 
-                    ApellidoMaterno = @apMat AND";
-            /*NumeroCasa = @numeroCasa"*/ // Comentado porque no se determina aún si habitan más personas en la misma casa.
+                    ApellidoMaterno = @apMat";
+            /*AND NumeroCasa = @numeroCasa"*/
 
             SqlParameter[] parametros = {
-                new SqlParameter("@nombre", nombre),
-                new SqlParameter("@apPat", apPat),
-                new SqlParameter("@apMat", apMat),
-                /*new SqlParameter("@numeroCasa", numeroCasa),*/ // Comentado porque no se determina aún si habitan más personas en la misma casa.
+                new SqlParameter("@nombre", nombre.Trim()),
+                new SqlParameter("@apPat", apPat.Trim()),
+                new SqlParameter("@apMat", apMat.Trim()),
+                /*new SqlParameter("@numeroCasa", numeroCasa),*/
             };
 
             object resultado = DbHelper.ExecuteScalar(sql, parametros);
             return Convert.ToInt32(resultado) > 0;
         }
-
 
         /**         
          * Método que limpia los campos del formulario de registro de residentes.
@@ -125,6 +124,8 @@ namespace CasetaDeVigilancia.src
             txtCalle.Clear();
             txtNumTel.Clear();
             txtCorreo.Clear();
+            txtUsuario.Clear();
+            txtContrasena.Clear();
         }
 
         /**
@@ -135,39 +136,39 @@ namespace CasetaDeVigilancia.src
         {
             StringBuilder errores = new StringBuilder();
 
-            if (string.IsNullOrWhiteSpace(txtNombres.Text))
+            if (string.IsNullOrWhiteSpace(txtNombres.Text.Trim()))
                 errores.AppendLine("El campo 'Nombres' es obligatorio.");
-            if (txtNombres.TextLength < 3)
+            if (txtNombres.Text.Trim().Length < 3)
                 errores.AppendLine("El nombre debe ser mayor a 2 caracteres.");
-            if (string.IsNullOrWhiteSpace(txtApllPat.Text))
+            if (string.IsNullOrWhiteSpace(txtApllPat.Text.Trim()))
                 errores.AppendLine("El campo 'Apellido Paterno' es obligatorio.");
-            if (txtApllPat.TextLength < 3)
+            if (txtApllPat.Text.Trim().Length < 3)
                 errores.AppendLine("El 'Apellido Paterno' debe ser mayor a 2 caracteres.");
-            if (string.IsNullOrWhiteSpace(txtApllMat.Text))
+            if (string.IsNullOrWhiteSpace(txtApllMat.Text.Trim()))
                 errores.AppendLine("El campo 'Apellido Materno' es obligatorio.");
-            if (txtApllMat.TextLength < 3)
+            if (txtApllMat.Text.Trim().Length < 3)
                 errores.AppendLine("El 'Apellido Materno' debe ser mayor a 2 caracteres.");
             if (nudNumeroCalle.Value == 0 || nudNumeroCalle.Value > 1000)
                 errores.AppendLine("El campo 'Número de Casa' debe ser mayor a 0 y menor a 1000.");
-            if (string.IsNullOrWhiteSpace(txtCalle.Text))
+            if (string.IsNullOrWhiteSpace(txtCalle.Text.Trim()))
                 errores.AppendLine("El campo 'Calle' es obligatorio.");
-            if (txtCalle.TextLength < 3)
+            if (txtCalle.Text.Trim().Length < 3)
                 errores.AppendLine("La 'Calle' debe ser mayor a 2 caracteres.");
-            if (string.IsNullOrWhiteSpace(txtNumTel.Text))
+            if (string.IsNullOrWhiteSpace(txtNumTel.Text.Trim()))
                 errores.AppendLine("El campo 'Teléfono' es obligatorio.");
-            else if (txtNumTel.Text.Length != 10)
+            else if (txtNumTel.Text.Trim().Length != 10)
                 errores.AppendLine("El número de teléfono debe tener exactamente 10 dígitos.");
-            if (string.IsNullOrWhiteSpace(txtCorreo.Text))
+            if (string.IsNullOrWhiteSpace(txtCorreo.Text.Trim()))
                 errores.AppendLine("El campo 'Correo' es obligatorio.");
-            else if (!txtCorreo.Text.Contains("@") || !txtCorreo.Text.Contains("."))
+            else if (!txtCorreo.Text.Trim().Contains("@") || !txtCorreo.Text.Trim().Contains("."))
                 errores.AppendLine("El correo electrónico no es válido.");
-            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text.Trim()))
                 errores.AppendLine("El campo 'Usuario' no puede estar vacío.");
-            else if (txtUsuario.TextLength < 3)
+            else if (txtUsuario.Text.Trim().Length < 3)
                 errores.AppendLine("El campo 'Usuario' debe ser mayor a dos caracteres.");
-            if (string.IsNullOrWhiteSpace(txtContrasena.Text))
+            if (string.IsNullOrWhiteSpace(txtContrasena.Text.Trim()))
                 errores.AppendLine("El campo 'Contraseña' no puede estar vacío.");
-            if (txtContrasena.TextLength > 0 && txtContrasena.TextLength < 8)
+            if (txtContrasena.Text.Trim().Length > 0 && txtContrasena.Text.Trim().Length < 8)
                 errores.AppendLine("La contraseña debe ser de al menos 8 caracteres.");                
 
             if (errores.Length > 0)
