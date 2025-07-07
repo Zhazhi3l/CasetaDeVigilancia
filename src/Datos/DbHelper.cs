@@ -55,5 +55,17 @@ namespace CasetaDeVigilancia.src.Datos
                 return cmd.ExecuteNonQuery();
             }
         }
+
+        public static object ExecuteScalar(string sql, params SqlParameter[] parameters)
+        {
+            using (var conn = GetConnection())
+            using (var cmd = new SqlCommand(sql, conn))
+            {
+                if (parameters != null)
+                    cmd.Parameters.AddRange(parameters);
+
+                return cmd.ExecuteScalar();
+            }
+        }
     }
 }

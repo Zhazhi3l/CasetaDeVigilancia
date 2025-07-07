@@ -75,6 +75,30 @@ namespace CasetaDeVigilancia.src
             }
         }
 
+
+        private bool ResidenteYaExiste(string nombre, string apPat, string apMat, int numeroCasa)
+        {
+            string sql = @"
+                SELECT COUNT(*) 
+                FROM Residente
+                WHERE 
+                    Nombre = @nombre AND 
+                    ApellidoPaterno = @apPat AND 
+                    ApellidoMaterno = @apMat AND
+                    NumeroCasa = @numeroCasa";
+
+            SqlParameter[] parametros = {
+                new SqlParameter("@nombre", nombre),
+                new SqlParameter("@apPat", apPat),
+                new SqlParameter("@apMat", apMat),
+                new SqlParameter("@numeroCasa", numeroCasa),
+            };
+
+            object resultado = DbHelper.ExecuteScalar(sql, parametros);
+            return Convert.ToInt32(resultado) > 0;
+        }
+
+
         /**         
          * Método que limpia los campos del formulario de registro de residentes.
          */
