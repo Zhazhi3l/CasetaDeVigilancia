@@ -38,7 +38,7 @@
             this.lblAvisoQr = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnEscanear = new System.Windows.Forms.Button();
-            this.txtCodigoQr = new System.Windows.Forms.TextBox();
+            this.txtQrReader = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelInvitado = new System.Windows.Forms.Panel();
             this.dtpVigencia = new System.Windows.Forms.DateTimePicker();
@@ -59,9 +59,11 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSalida = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnEntrada = new System.Windows.Forms.Button();
+            this.lblEsperaQr = new System.Windows.Forms.Label();
+            this.lblQrLeidoYEsperando = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -133,7 +135,7 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.panel9);
-            this.panel6.Controls.Add(this.txtCodigoQr);
+            this.panel6.Controls.Add(this.txtQrReader);
             this.panel6.Controls.Add(this.groupBox1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
@@ -186,20 +188,21 @@
             this.btnEscanear.UseVisualStyleBackColor = false;
             this.btnEscanear.Click += new System.EventHandler(this.btnEscanear_Click);
             // 
-            // txtCodigoQr
+            // txtQrReader
             // 
-            this.txtCodigoQr.Location = new System.Drawing.Point(688, 280);
-            this.txtCodigoQr.Name = "txtCodigoQr";
-            this.txtCodigoQr.Size = new System.Drawing.Size(100, 22);
-            this.txtCodigoQr.TabIndex = 14;
-            this.txtCodigoQr.Visible = false;
-            this.txtCodigoQr.TextChanged += new System.EventHandler(this.txtCodigoQr_TextChanged);
+            this.txtQrReader.Location = new System.Drawing.Point(781, 283);
+            this.txtQrReader.Name = "txtQrReader";
+            this.txtQrReader.Size = new System.Drawing.Size(16, 22);
+            this.txtQrReader.TabIndex = 14;
+            this.txtQrReader.TextChanged += new System.EventHandler(this.txtQrReader_TextChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.panelInvitado);
             this.groupBox1.Controls.Add(this.panelResidente);
             this.groupBox1.Controls.Add(this.panelComun);
+            this.groupBox1.Controls.Add(this.lblEsperaQr);
+            this.groupBox1.Controls.Add(this.lblQrLeidoYEsperando);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(17, 41);
             this.groupBox1.Name = "groupBox1";
@@ -220,6 +223,7 @@
             this.panelInvitado.Name = "panelInvitado";
             this.panelInvitado.Size = new System.Drawing.Size(364, 86);
             this.panelInvitado.TabIndex = 16;
+            this.panelInvitado.Visible = false;
             // 
             // dtpVigencia
             // 
@@ -289,6 +293,7 @@
             this.panelResidente.Name = "panelResidente";
             this.panelResidente.Size = new System.Drawing.Size(200, 100);
             this.panelResidente.TabIndex = 15;
+            this.panelResidente.Visible = false;
             // 
             // label7
             // 
@@ -322,6 +327,7 @@
             this.panelComun.Name = "panelComun";
             this.panelComun.Size = new System.Drawing.Size(333, 100);
             this.panelComun.TabIndex = 14;
+            this.panelComun.Visible = false;
             // 
             // label4
             // 
@@ -395,49 +401,73 @@
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.button2);
+            this.panel8.Controls.Add(this.btnSalida);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel8.Location = new System.Drawing.Point(414, 0);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(386, 62);
             this.panel8.TabIndex = 1;
             // 
-            // button2
+            // btnSalida
             // 
-            this.button2.BackColor = System.Drawing.Color.IndianRed;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Enabled = false;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(386, 62);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "SALIDA";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnSalida.BackColor = System.Drawing.Color.IndianRed;
+            this.btnSalida.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSalida.Enabled = false;
+            this.btnSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalida.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalida.Location = new System.Drawing.Point(0, 0);
+            this.btnSalida.Name = "btnSalida";
+            this.btnSalida.Size = new System.Drawing.Size(386, 62);
+            this.btnSalida.TabIndex = 1;
+            this.btnSalida.Text = "SALIDA";
+            this.btnSalida.UseVisualStyleBackColor = false;
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.button1);
+            this.panel7.Controls.Add(this.btnEntrada);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(387, 62);
             this.panel7.TabIndex = 0;
             // 
-            // button1
+            // btnEntrada
             // 
-            this.button1.BackColor = System.Drawing.Color.LimeGreen;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(387, 62);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "ENTRADA";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnEntrada.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnEntrada.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEntrada.Enabled = false;
+            this.btnEntrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntrada.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEntrada.Location = new System.Drawing.Point(0, 0);
+            this.btnEntrada.Name = "btnEntrada";
+            this.btnEntrada.Size = new System.Drawing.Size(387, 62);
+            this.btnEntrada.TabIndex = 0;
+            this.btnEntrada.Text = "ENTRADA";
+            this.btnEntrada.UseVisualStyleBackColor = false;
+            // 
+            // lblEsperaQr
+            // 
+            this.lblEsperaQr.AutoSize = true;
+            this.lblEsperaQr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblEsperaQr.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEsperaQr.Location = new System.Drawing.Point(3, 26);
+            this.lblEsperaQr.Name = "lblEsperaQr";
+            this.lblEsperaQr.Size = new System.Drawing.Size(374, 41);
+            this.lblEsperaQr.TabIndex = 17;
+            this.lblEsperaQr.Text = "Esperando lectura del QR...";
+            this.lblEsperaQr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblQrLeidoYEsperando
+            // 
+            this.lblQrLeidoYEsperando.AutoSize = true;
+            this.lblQrLeidoYEsperando.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblQrLeidoYEsperando.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQrLeidoYEsperando.Location = new System.Drawing.Point(3, 26);
+            this.lblQrLeidoYEsperando.Name = "lblQrLeidoYEsperando";
+            this.lblQrLeidoYEsperando.Size = new System.Drawing.Size(318, 41);
+            this.lblQrLeidoYEsperando.TabIndex = 18;
+            this.lblQrLeidoYEsperando.Text = "Cargando la consulta...";
+            this.lblQrLeidoYEsperando.Visible = false;
             // 
             // frmAccesoFraccionamiento
             // 
@@ -460,6 +490,7 @@
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panelInvitado.ResumeLayout(false);
             this.panelInvitado.PerformLayout();
             this.panelResidente.ResumeLayout(false);
@@ -490,11 +521,11 @@
         private System.Windows.Forms.Label lblIDInvitado;
         private System.Windows.Forms.Label lblIDResidente;
         private System.Windows.Forms.Label lblEstatus;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSalida;
+        private System.Windows.Forms.Button btnEntrada;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox txtCodigoQr;
+        private System.Windows.Forms.TextBox txtQrReader;
         private System.Windows.Forms.Panel panelComun;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -509,5 +540,7 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button btnEscanear;
         private System.Windows.Forms.DateTimePicker dtpVigencia;
+        private System.Windows.Forms.Label lblEsperaQr;
+        private System.Windows.Forms.Label lblQrLeidoYEsperando;
     }
 }
