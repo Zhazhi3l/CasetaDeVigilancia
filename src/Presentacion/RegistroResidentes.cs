@@ -32,6 +32,12 @@ namespace CasetaDeVigilancia.src
          */
         private void btnCrearUsuario_Click(object sender, EventArgs e)
         {
+            if (ResidenteYaExiste(txtNombres.Text, txtApllPat.Text, txtApllMat.Text)) /*, (int)nudNumeroCalle.Value)*/ // Comentado porque no se determina aún si habitan más personas en la misma casa.
+            {
+                MessageBox.Show("Este residente ya está registrado.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Preparamos SQL parametrizado para evitar inyecciones SQL
             if (validarCasillas())
             {
@@ -75,8 +81,16 @@ namespace CasetaDeVigilancia.src
             }
         }
 
-
-        private bool ResidenteYaExiste(string nombre, string apPat, string apMat, int numeroCasa)
+        /**
+         * Método que verifica si un residente ya existe en la base de datos.
+         * Retorna true si el residente ya existe, false en caso contrario.
+         * 
+         * @param nombre Nombre del residente.
+         * @param apPat Apellido paterno del residente.
+         * @param apMat Apellido materno del residente.
+         * @param numeroCasa Número de casa del residente (actualmente comentado).
+         */
+        private bool ResidenteYaExiste(string nombre, string apPat, string apMat) /*, int numeroCasa*/ // Comentado porque no se determina aún si habitan más personas en la misma casa.
         {
             string sql = @"
                 SELECT COUNT(*) 
@@ -84,14 +98,14 @@ namespace CasetaDeVigilancia.src
                 WHERE 
                     Nombre = @nombre AND 
                     ApellidoPaterno = @apPat AND 
-                    ApellidoMaterno = @apMat AND
-                    NumeroCasa = @numeroCasa";
+                    ApellidoMaterno = @apMat AND";
+            /*NumeroCasa = @numeroCasa"*/ // Comentado porque no se determina aún si habitan más personas en la misma casa.
 
             SqlParameter[] parametros = {
                 new SqlParameter("@nombre", nombre),
                 new SqlParameter("@apPat", apPat),
                 new SqlParameter("@apMat", apMat),
-                new SqlParameter("@numeroCasa", numeroCasa),
+                /*new SqlParameter("@numeroCasa", numeroCasa),*/ // Comentado porque no se determina aún si habitan más personas en la misma casa.
             };
 
             object resultado = DbHelper.ExecuteScalar(sql, parametros);

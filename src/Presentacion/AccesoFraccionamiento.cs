@@ -15,6 +15,10 @@ namespace CasetaDeVigilancia.src
 {
     public partial class frmAccesoFraccionamiento : Form
     {
+        private int invitadoID;
+        private int residenteID;
+        private bool esInvitado;
+
         public frmAccesoFraccionamiento()
         {
             InitializeComponent();
@@ -63,12 +67,11 @@ namespace CasetaDeVigilancia.src
                 panelInvitado.Visible = true;
 
                 // Guardo estado 
-                /*
+                
                 invitadoID = (int)row["InvitadoID"];
                 residenteID = (int)row["ResidenteID"];
                 esInvitado = true;
                 return;
-                */
             }
 
             // 2) Si no hay invitado, buscamos un residente
@@ -78,18 +81,18 @@ namespace CasetaDeVigilancia.src
                 WHERE CodigoQr = @cod",  // o WHERE UsuarioID=@cod
                         new SqlParameter("@cod", codigo)
             );
-            /*
+            
             if (dtRes.Rows.Count > 0)
             {
                 var row = dtRes.Rows[0];
                 // Cargo datos comunes
-                txtNombre.Text = row["Nombre"].ToString();
-                txtApellidoP.Text = row["ApellidoPaterno"].ToString();
-                txtApellidoM.Text = row["ApellidoMaterno"].ToString();
+                lblNombre.Text = row["Nombre"].ToString();
+                lblApellPaterno.Text = row["ApellidoPaterno"].ToString();
+                lblApellMaterno.Text = row["ApellidoMaterno"].ToString();
                 panelComun.Visible = true;
 
                 // Cargo datos de residente
-                txtResidenteID.Text = row["UsuarioID"].ToString();
+                lblIDResidente.Text = row["UsuarioID"].ToString();
                 panelResidente.Visible = true;
 
                 // Guardo estado
@@ -97,7 +100,6 @@ namespace CasetaDeVigilancia.src
                 esInvitado = false;
                 return;
             }
-            */
         }
             
 

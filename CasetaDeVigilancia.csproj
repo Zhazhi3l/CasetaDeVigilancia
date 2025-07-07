@@ -170,11 +170,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Datos\DbHelper.cs" />
+    <Compile Include="src\Conexiones\DbHelper.cs" />
     <Compile Include="src\Datos\Modelos\HistorialAcceso.cs" />
     <Compile Include="src\Datos\Modelos\Invitado.cs" />
     <Compile Include="src\Datos\Modelos\Residente.cs" />
-    <Compile Include="src\Datos\FraccionamientoContext.cs" />
     <Compile Include="src\Presentacion\AccesoFraccionamiento.cs">
       <SubType>Form</SubType>
     </Compile>
