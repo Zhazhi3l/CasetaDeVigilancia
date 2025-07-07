@@ -180,6 +180,12 @@
     <Compile Include="src\Presentacion\AccesoFraccionamiento.Designer.cs">
       <DependentUpon>AccesoFraccionamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Presentacion\ListaResidentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Presentacion\ListaResidentes.Designer.cs">
+      <DependentUpon>ListaResidentes.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Presentacion\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </Compile>
     <EmbeddedResource Include="src\Presentacion\AccesoFraccionamiento.resx">
       <DependentUpon>AccesoFraccionamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Presentacion\ListaResidentes.resx">
+      <DependentUpon>ListaResidentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Presentacion\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
