@@ -8,7 +8,7 @@ namespace CasetaDeVigilancia.src.Datos.Datos.Modelos
 {
     public class Residente
     {
-        public int UsuarioID { get; set; }
+        public int ResidenteID { get; set; }
         public string Nombre { get; set; }
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }

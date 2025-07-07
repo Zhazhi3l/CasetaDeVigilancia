@@ -81,6 +81,7 @@ namespace CasetaDeVigilancia.src
                 }
 
                 MessageBox.Show("Residente registrado");
+                limpiarCampos();
                 this.Close();
             }
         }

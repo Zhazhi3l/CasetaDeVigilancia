@@ -13,7 +13,7 @@ namespace CasetaDeVigilancia.src.Datos.Datos.Modelos
         public DateTime? FechaSalida { get; set; }
 
         // FK a Residente/Usuario
-        public int UsuarioID { get; set; }
+        public int ResidenteID { get; set; }
         public virtual Residente Residente { get; set; }
 
         // FK a Invitado
