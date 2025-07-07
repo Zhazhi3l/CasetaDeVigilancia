@@ -170,6 +170,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resources\Controles\DatosDeUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Resources\Controles\DatosDeUsuario.Designer.cs">
+      <DependentUpon>DatosDeUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Conexiones\DbHelper.cs" />
     <Compile Include="src\Datos\Modelos\HistorialAcceso.cs" />
     <Compile Include="src\Datos\Modelos\Invitado.cs" />
@@ -179,6 +185,18 @@
     </Compile>
     <Compile Include="src\Presentacion\AccesoFraccionamiento.Designer.cs">
       <DependentUpon>AccesoFraccionamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Presentacion\AdministrarResidentes\AdminResidentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Presentacion\AdministrarResidentes\AdminResidentes.Designer.cs">
+      <DependentUpon>AdminResidentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Presentacion\HistorialAcceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Presentacion\HistorialAcceso.Designer.cs">
+      <DependentUpon>HistorialAcceso.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Presentacion\ListaResidentes.cs">
       <SubType>Form</SubType>
@@ -200,8 +218,17 @@
     <Compile Include="src\Presentacion\RegistroResidentes.Designer.cs">
       <DependentUpon>RegistroResidentes.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Resources\Controles\DatosDeUsuario.resx">
+      <DependentUpon>DatosDeUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Presentacion\AccesoFraccionamiento.resx">
       <DependentUpon>AccesoFraccionamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Presentacion\AdministrarResidentes\AdminResidentes.resx">
+      <DependentUpon>AdminResidentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Presentacion\HistorialAcceso.resx">
+      <DependentUpon>HistorialAcceso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Presentacion\ListaResidentes.resx">
       <DependentUpon>ListaResidentes.cs</DependentUpon>

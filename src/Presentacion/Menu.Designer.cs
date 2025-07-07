@@ -85,8 +85,9 @@
             this.btnSesionGuardia.Name = "btnSesionGuardia";
             this.btnSesionGuardia.Size = new System.Drawing.Size(267, 85);
             this.btnSesionGuardia.TabIndex = 10;
-            this.btnSesionGuardia.Text = "Sesión Guardia";
+            this.btnSesionGuardia.Text = "Administrar\r\nResidentes";
             this.btnSesionGuardia.UseVisualStyleBackColor = true;
+            this.btnSesionGuardia.Click += new System.EventHandler(this.btnSesionGuardia_Click);
             // 
             // btnHistorial
             // 
@@ -105,6 +106,7 @@
             this.btnHistorial.TabIndex = 9;
             this.btnHistorial.Text = "Historial de\r\nAccesos";
             this.btnHistorial.UseVisualStyleBackColor = true;
+            this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
             // 
             // btnRegistro
             // 

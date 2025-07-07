@@ -1,4 +1,5 @@
 ﻿using CasetaDeVigilancia.src;
+using CasetaDeVigilancia.src.Presentacion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,6 +62,18 @@ namespace CasetaDeVigilancia
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            frmHistorialAcceso historial = new frmHistorialAcceso();
+            historial.ShowDialog();
+        }
+
+        private void btnSesionGuardia_Click(object sender, EventArgs e)
+        {
+            frmAdminResidentes administrarres = new frmAdminResidentes();
+            administrarres.ShowDialog();
         }
     }
 }
