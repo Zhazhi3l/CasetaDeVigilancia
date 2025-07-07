@@ -21,7 +21,7 @@ namespace CasetaDeVigilancia.src
             txtCodigoQr.Focus();
             panelResidente.Visible = false;
             panelInvitado.Visible = false;
-            Image original = Properties.Resources.flecha_izquierda; Image redimensionada = new Bitmap(original, new Size(25, 25)); btnRegresar.Image = redimensionada; btnRegresar.ImageAlign = ContentAlignment.MiddleLeft;
+            Image original = Properties.Resources.flecha_izquierda; Image redimensionada = new Bitmap(original, new Size(20, 20)); btnRegresar.Image = redimensionada; btnRegresar.ImageAlign = ContentAlignment.MiddleLeft;
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)

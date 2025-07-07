@@ -17,6 +17,6 @@ namespace CasetaDeVigilancia.src.Datos.Datos.Modelos
 
         // FK
         public int ResidenteID { get; set; }
-        public virtual Residente Residente { get; set; }
+        public Residente Residente { get; set; }
     }
 }

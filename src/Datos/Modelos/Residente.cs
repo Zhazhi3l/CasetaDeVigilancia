@@ -18,9 +18,9 @@ namespace CasetaDeVigilancia.src.Datos.Datos.Modelos
         public string Correo { get; set; }
         public DateTime FechaRegistro { get; set; }
 
-        // Relaciones
-        public virtual ICollection<Invitado> Invitados { get; set; }
-        public virtual ICollection<HistorialAcceso> Historiales { get; set; }
+        // Relaciones | Temporal porque no es si utilizará en el futuro
+        public ICollection<Invitado> Invitados { get; set; }
+        public ICollection<HistorialAcceso> Historiales { get; set; }
 
     }
 }

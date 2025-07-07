@@ -19,22 +19,12 @@ namespace CasetaDeVigilancia.src
         {
             InitializeComponent();
             this.Load += frmRegistroResidentes_Load;
-            Image original = Properties.Resources.flecha_izquierda;Image redimensionada = new Bitmap(original, new Size(25, 25));btnRegresar.Image = redimensionada;btnRegresar.ImageAlign = ContentAlignment.MiddleLeft;
+            Image original = Properties.Resources.flecha_izquierda;Image redimensionada = new Bitmap(original, new Size(20, 20));btnRegresar.Image = redimensionada;btnRegresar.ImageAlign = ContentAlignment.MiddleLeft;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                /*&& txtNumTel.TextLength<=10*/)
-            {
-                e.Handled = true;
-
-            }
         }
 
         /**
@@ -71,7 +61,7 @@ namespace CasetaDeVigilancia.src
                     // Ejecutamos INSERT:
                     int filas = DbHelper.ExecuteNonQuery(sql, parametros);
                     if (filas > 0)
-                        MessageBox.Show("Residente registrado correctamente.");
+                        MessageBox.Show("¡Residente registrado correctamente!");
                     else
                         MessageBox.Show("No se insertó ningún registro.");
                 }
@@ -80,7 +70,6 @@ namespace CasetaDeVigilancia.src
                     MessageBox.Show("Error al registrar: " + ex.Message);
                 }
 
-                MessageBox.Show("Residente registrado");
                 limpiarCampos();
                 this.Close();
             }
@@ -108,16 +97,24 @@ namespace CasetaDeVigilancia.src
         {
             StringBuilder errores = new StringBuilder();
 
-            if (string.IsNullOrWhiteSpace(txtNombres.Text) || txtNombres.TextLength < 3)
+            if (string.IsNullOrWhiteSpace(txtNombres.Text))
                 errores.AppendLine("El campo 'Nombres' es obligatorio.");
-            if (string.IsNullOrWhiteSpace(txtApllPat.Text) || txtApllPat.TextLength < 3)
+            if (txtNombres.TextLength < 3)
+                errores.AppendLine("El nombre debe ser mayor a 2 caracteres.");
+            if (string.IsNullOrWhiteSpace(txtApllPat.Text))
                 errores.AppendLine("El campo 'Apellido Paterno' es obligatorio.");
-            if (string.IsNullOrWhiteSpace(txtApllMat.Text) || txtApllMat.TextLength < 3)
+            if (txtApllPat.TextLength < 3)
+                errores.AppendLine("El 'Apellido Paterno' debe ser mayor a 2 caracteres.");
+            if (string.IsNullOrWhiteSpace(txtApllMat.Text))
                 errores.AppendLine("El campo 'Apellido Materno' es obligatorio.");
-            if (nudNumeroCalle.Value == 0)
-                errores.AppendLine("El campo 'Número de Casa' debe ser mayor a 0.");
+            if (txtApllMat.TextLength < 3)
+                errores.AppendLine("El 'Apellido Materno' debe ser mayor a 2 caracteres.");
+            if (nudNumeroCalle.Value == 0 || nudNumeroCalle.Value > 1000)
+                errores.AppendLine("El campo 'Número de Casa' debe ser mayor a 0 y menor a 1000.");
             if (string.IsNullOrWhiteSpace(txtCalle.Text))
                 errores.AppendLine("El campo 'Calle' es obligatorio.");
+            if (txtCalle.TextLength < 3)
+                errores.AppendLine("La 'Calle' debe ser mayor a 2 caracteres.");
             if (string.IsNullOrWhiteSpace(txtNumTel.Text))
                 errores.AppendLine("El campo 'Teléfono' es obligatorio.");
             else if (txtNumTel.Text.Length != 10)
@@ -126,6 +123,14 @@ namespace CasetaDeVigilancia.src
                 errores.AppendLine("El campo 'Correo' es obligatorio.");
             else if (!txtCorreo.Text.Contains("@") || !txtCorreo.Text.Contains("."))
                 errores.AppendLine("El correo electrónico no es válido.");
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+                errores.AppendLine("El campo 'Usuario' no puede estar vacío.");
+            else if (txtUsuario.TextLength < 3)
+                errores.AppendLine("El campo 'Usuario' debe ser mayor a dos caracteres.");
+            if (string.IsNullOrWhiteSpace(txtContrasena.Text))
+                errores.AppendLine("El campo 'Contraseña' no puede estar vacío.");
+            if (txtContrasena.TextLength > 0 && txtContrasena.TextLength < 8)
+                errores.AppendLine("La contraseña debe ser de al menos 8 caracteres.");                
 
             if (errores.Length > 0)
             {
@@ -178,5 +183,12 @@ namespace CasetaDeVigilancia.src
             }
         }
 
+        private void txtNumTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
