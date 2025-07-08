@@ -36,8 +36,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblAvisoQr = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.btnEscanear = new System.Windows.Forms.Button();
             this.txtQrReader = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelInvitado = new System.Windows.Forms.Panel();
@@ -57,19 +55,18 @@
             this.lblApellMaterno = new System.Windows.Forms.Label();
             this.lblApellPaterno = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.lblEsperaQr = new System.Windows.Forms.Label();
+            this.lblQrLeidoYEsperando = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnSalida = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnEntrada = new System.Windows.Forms.Button();
-            this.lblEsperaQr = new System.Windows.Forms.Label();
-            this.lblQrLeidoYEsperando = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelInvitado.SuspendLayout();
             this.panelResidente.SuspendLayout();
@@ -146,10 +143,9 @@
             // panel9
             // 
             this.panel9.Controls.Add(this.lblAvisoQr);
-            this.panel9.Controls.Add(this.panel10);
-            this.panel9.Location = new System.Drawing.Point(577, 101);
+            this.panel9.Location = new System.Drawing.Point(577, 135);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(200, 111);
+            this.panel9.Size = new System.Drawing.Size(200, 61);
             this.panel9.TabIndex = 15;
             // 
             // lblAvisoQr
@@ -163,30 +159,6 @@
             this.lblAvisoQr.TabIndex = 1;
             this.lblAvisoQr.Text = "¡Código QR leído!";
             this.lblAvisoQr.Visible = false;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.btnEscanear);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel10.Location = new System.Drawing.Point(0, 52);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(200, 59);
-            this.panel10.TabIndex = 0;
-            // 
-            // btnEscanear
-            // 
-            this.btnEscanear.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnEscanear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEscanear.Enabled = false;
-            this.btnEscanear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEscanear.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnEscanear.Location = new System.Drawing.Point(0, 0);
-            this.btnEscanear.Name = "btnEscanear";
-            this.btnEscanear.Size = new System.Drawing.Size(200, 59);
-            this.btnEscanear.TabIndex = 0;
-            this.btnEscanear.Text = "Escanear";
-            this.btnEscanear.UseVisualStyleBackColor = false;
-            this.btnEscanear.Click += new System.EventHandler(this.btnEscanear_Click);
             // 
             // txtQrReader
             // 
@@ -289,7 +261,7 @@
             // 
             this.panelResidente.Controls.Add(this.label7);
             this.panelResidente.Controls.Add(this.lblIDResidente);
-            this.panelResidente.Location = new System.Drawing.Point(345, 29);
+            this.panelResidente.Location = new System.Drawing.Point(338, 29);
             this.panelResidente.Name = "panelResidente";
             this.panelResidente.Size = new System.Drawing.Size(200, 100);
             this.panelResidente.TabIndex = 15;
@@ -389,6 +361,30 @@
             this.lblNombre.TabIndex = 11;
             this.lblNombre.Text = "Nombre";
             // 
+            // lblEsperaQr
+            // 
+            this.lblEsperaQr.AutoSize = true;
+            this.lblEsperaQr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblEsperaQr.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEsperaQr.Location = new System.Drawing.Point(3, 26);
+            this.lblEsperaQr.Name = "lblEsperaQr";
+            this.lblEsperaQr.Size = new System.Drawing.Size(374, 41);
+            this.lblEsperaQr.TabIndex = 17;
+            this.lblEsperaQr.Text = "Esperando lectura del QR...";
+            this.lblEsperaQr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblQrLeidoYEsperando
+            // 
+            this.lblQrLeidoYEsperando.AutoSize = true;
+            this.lblQrLeidoYEsperando.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblQrLeidoYEsperando.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQrLeidoYEsperando.Location = new System.Drawing.Point(3, 26);
+            this.lblQrLeidoYEsperando.Name = "lblQrLeidoYEsperando";
+            this.lblQrLeidoYEsperando.Size = new System.Drawing.Size(318, 41);
+            this.lblQrLeidoYEsperando.TabIndex = 18;
+            this.lblQrLeidoYEsperando.Text = "Cargando la consulta...";
+            this.lblQrLeidoYEsperando.Visible = false;
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.panel8);
@@ -421,6 +417,7 @@
             this.btnSalida.TabIndex = 1;
             this.btnSalida.Text = "SALIDA";
             this.btnSalida.UseVisualStyleBackColor = false;
+            this.btnSalida.Click += new System.EventHandler(this.btnSalida_Click);
             // 
             // panel7
             // 
@@ -444,30 +441,7 @@
             this.btnEntrada.TabIndex = 0;
             this.btnEntrada.Text = "ENTRADA";
             this.btnEntrada.UseVisualStyleBackColor = false;
-            // 
-            // lblEsperaQr
-            // 
-            this.lblEsperaQr.AutoSize = true;
-            this.lblEsperaQr.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblEsperaQr.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEsperaQr.Location = new System.Drawing.Point(3, 26);
-            this.lblEsperaQr.Name = "lblEsperaQr";
-            this.lblEsperaQr.Size = new System.Drawing.Size(374, 41);
-            this.lblEsperaQr.TabIndex = 17;
-            this.lblEsperaQr.Text = "Esperando lectura del QR...";
-            this.lblEsperaQr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblQrLeidoYEsperando
-            // 
-            this.lblQrLeidoYEsperando.AutoSize = true;
-            this.lblQrLeidoYEsperando.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblQrLeidoYEsperando.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQrLeidoYEsperando.Location = new System.Drawing.Point(3, 26);
-            this.lblQrLeidoYEsperando.Name = "lblQrLeidoYEsperando";
-            this.lblQrLeidoYEsperando.Size = new System.Drawing.Size(318, 41);
-            this.lblQrLeidoYEsperando.TabIndex = 18;
-            this.lblQrLeidoYEsperando.Text = "Cargando la consulta...";
-            this.lblQrLeidoYEsperando.Visible = false;
+            this.btnEntrada.Click += new System.EventHandler(this.btnEntrada_Click);
             // 
             // frmAccesoFraccionamiento
             // 
@@ -488,7 +462,6 @@
             this.panel6.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            this.panel10.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelInvitado.ResumeLayout(false);
@@ -537,8 +510,6 @@
         private System.Windows.Forms.Panel panelResidente;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label lblAvisoQr;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Button btnEscanear;
         private System.Windows.Forms.DateTimePicker dtpVigencia;
         private System.Windows.Forms.Label lblEsperaQr;
         private System.Windows.Forms.Label lblQrLeidoYEsperando;

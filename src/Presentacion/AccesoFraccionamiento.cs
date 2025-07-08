@@ -18,6 +18,7 @@ namespace CasetaDeVigilancia.src
         private int invitadoID;
         private int residenteID;
         private bool esInvitado;
+        private bool enProceso = false;
 
         public frmAccesoFraccionamiento()
         {
@@ -31,6 +32,21 @@ namespace CasetaDeVigilancia.src
             txtQrReader.BackColor = this.BackColor;
 
             Image original = Properties.Resources.flecha_izquierda; Image redimensionada = new Bitmap(original, new Size(20, 20)); btnRegresar.Image = redimensionada; btnRegresar.ImageAlign = ContentAlignment.MiddleLeft;
+            ReiniciarLecturaQR();
+        }
+
+        /**
+         * Reinicia las etiquetas y prepara el txt como la primera vez.
+         */
+        private void ReiniciarLecturaQR()
+        {
+            txtQrReader.Clear();
+            txtQrReader.Enabled = true;
+            this.ActiveControl = txtQrReader;
+
+            lblEsperaQr.Visible = true;
+            lblAvisoQr.Visible = false;
+            lblQrLeidoYEsperando.Visible = false;
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
@@ -38,6 +54,9 @@ namespace CasetaDeVigilancia.src
             this.Close();
         }
 
+        /*
+         * Antes esto se hacía de forma manual con un botón, pero ahora se hace automáticamente al cambiar el texto del txtQrReader.
+         * 
         private async void btnEscanear_Click(object sender, EventArgs e)
         {
             string codigo = txtQrReader.Text.Trim();
@@ -47,30 +66,32 @@ namespace CasetaDeVigilancia.src
             await ProcesarQrAsync(codigo);
             btnEscanear.Enabled = true;
         }
+        */
 
+        /**
+         * Procesa de forma asíncrona el código QR.
+         * Verifica el tipo de Usuario que se encuentra en el código QR.
+         * Realiza una búsqueda por ID según el tipo de Usuario.
+         */
         private async Task ProcesarQrAsync(string codigo)
         {
             // Reset de la interfaz
             LimpiarPaneles();
             try
             {
-                if (!codigo.Contains("|"))
-                {
-                    MessageBox.Show("Formato de código QR inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 string[] partes = codigo.Split('|');
                 if (partes.Length != 2)
                 {
-                    MessageBox.Show("Código QR corrupto o mal formado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El código QR tiene un formato inválido.", "QR no reconocido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                string tipo = partes[0];
-                if (!int.TryParse(partes[1], out int id))
+                string tipo = partes[0].Trim().ToUpper();
+                string idTexto = partes[1].Trim();
+
+                if ((tipo != "RES" && tipo != "INV") || !int.TryParse(idTexto, out int id))
                 {
-                    MessageBox.Show("ID inválido en el código QR.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"El código QR no es válido. Revisa que sea del tipo RES|ID o INV|ID.", "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -89,9 +110,7 @@ namespace CasetaDeVigilancia.src
             }
             finally
             {
-                txtQrReader.Clear();
-                txtQrReader.Enabled = true;
-                this.ActiveControl = txtQrReader;
+                ReiniciarLecturaQR();
             }
         }
 
@@ -100,6 +119,9 @@ namespace CasetaDeVigilancia.src
          */
         private async Task BuscarResidentePorID(int id)
         {
+            // Deshabilitar la etiqueta de espera.
+            lblQrLeidoYEsperando.Visible = false;
+
             var result = await Task.Run(() => DbHelper.ExecuteQuery(@"
                 SELECT ResidenteID, Nombre, ApellidoPaterno, ApellidoMaterno
                 FROM Residente
@@ -113,10 +135,10 @@ namespace CasetaDeVigilancia.src
             }
 
             var row = result.Rows[0];
-            lblNombre.Text = row["Nombre"].ToString();
-            lblApellPaterno.Text = row["ApellidoPaterno"].ToString();
-            lblApellMaterno.Text = row["ApellidoMaterno"].ToString();
-            lblIDResidente.Text = row["ResidenteID"].ToString();
+            lblNombre.Text = row["Nombre"].ToString().ToUpper();
+            lblApellPaterno.Text = row["ApellidoPaterno"].ToString().ToUpper();
+            lblApellMaterno.Text = row["ApellidoMaterno"].ToString().ToUpper();
+            lblIDResidente.Text = row["ResidenteID"].ToString().ToUpper();
 
             panelComun.Visible = true;
             panelResidente.Visible = true;
@@ -125,6 +147,10 @@ namespace CasetaDeVigilancia.src
 
             btnEntrada.Enabled = true;
             btnSalida.Enabled = true;
+
+            lblQrLeidoYEsperando.Visible = false;
+            lblAvisoQr.Visible = false;
+            lblEsperaQr.Visible = false;
         }
 
         /**
@@ -132,6 +158,9 @@ namespace CasetaDeVigilancia.src
          */
         private async Task BuscarInvitadoPorID(int id)
         {
+            // Deshabilitar la etiqueta de espera.
+            lblQrLeidoYEsperando.Visible = false;
+
             var result = await Task.Run(() => DbHelper.ExecuteQuery(@"
                 SELECT i.InvitadoID, i.FechaVigencia, i.Estatus,
                        r.ResidenteID, r.Nombre, r.ApellidoPaterno, r.ApellidoMaterno
@@ -147,30 +176,33 @@ namespace CasetaDeVigilancia.src
             }
 
             var row = result.Rows[0];
-            lblNombre.Text = row["Nombre"].ToString();
-            lblApellPaterno.Text = row["ApellidoPaterno"].ToString();
-            lblApellMaterno.Text = row["ApellidoMaterno"].ToString();
-            lblIDInvitado.Text = row["InvitadoID"].ToString();
-            dtpVigencia.Value = (DateTime)row["FechaVigencia"];
-            lblEstatus.Text = row["Estatus"].ToString();
-
             DateTime vigencia = (DateTime)row["FechaVigencia"];
-
             if (vigencia < DateTime.Now)
             {
                 MessageBox.Show("Este código QR ya venció por fecha.", "QR caducado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            lblEstatus.Text = row["Estatus"].ToString().ToUpper();
+            lblNombre.Text = row["Nombre"].ToString().ToUpper();
+            lblApellPaterno.Text = row["ApellidoPaterno"].ToString().ToUpper();
+            lblApellMaterno.Text = row["ApellidoMaterno"].ToString().ToUpper();
+            lblIDInvitado.Text = row["InvitadoID"].ToString().ToUpper();
+            dtpVigencia.Value = (DateTime)row["FechaVigencia"];
+            
             panelComun.Visible = true;
             panelInvitado.Visible = true;
 
             panelResidente.Visible = true;
-            lblIDResidente.Text = row["ResidenteID"].ToString();
+            lblIDResidente.Text = row["ResidenteID"].ToString().ToUpper();
 
             invitadoID = (int)row["InvitadoID"];
             residenteID = (int)row["ResidenteID"];
             esInvitado = true;
+
+            lblQrLeidoYEsperando.Visible = false;
+            lblAvisoQr.Visible = false;
+            lblEsperaQr.Visible = false;
 
             ValidarAccesoInvitado();
         }
@@ -244,22 +276,106 @@ namespace CasetaDeVigilancia.src
             btnSalida.Enabled = false;
         }
 
-        private bool enProceso = false;
-
-        private void txtQrReader_TextChanged(object sender, EventArgs e)
+        private async void txtQrReader_TextChanged(object sender, EventArgs e)
         {
-            lblEsperaQr.Visible = false;
+            if (enProceso) return;
+
+            enProceso = true;
             txtQrReader.Enabled = false;
-            string qr = txtQrReader.Text.Trim();
+
+            lblEsperaQr.Visible = false;
             lblAvisoQr.Visible = true;
             lblQrLeidoYEsperando.Visible = true;
 
+            string qr = txtQrReader.Text.Trim();
+
             if (!string.IsNullOrWhiteSpace(qr))
             {
-                btnEscanear.Enabled = true;
-                _ = ProcesarQrAsync(qr);
-                //btnEscanear.PerformClick(); // Simula clic automático al leer QR
+                await ProcesarQrAsync(qr);
             }
+
+            enProceso = false;
+        }
+
+        private void btnEntrada_Click(object sender, EventArgs e)
+        {
+            if (esInvitado)
+            {
+                if (VerificarEntradaPreviaInvitado(invitadoID))
+                {
+                    MessageBox.Show("El invitado ya se encuentra dentro. No se puede registrar otra entrada.", "Entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string insertSql = @"
+                    INSERT INTO Historial (FechaEntrada, InvitadoID)
+                    VALUES (GETDATE(), @id)";
+                DbHelper.ExecuteNonQuery(insertSql, new SqlParameter("@id", invitadoID));
+
+                MessageBox.Show("Entrada de invitado registrada correctamente.", "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Cambiar estado a VENCIDO si se requiere (uso único)
+                string updateSql = "UPDATE Invitado SET Estatus = 'Vencido' WHERE InvitadoID = @id";
+                DbHelper.ExecuteNonQuery(updateSql, new SqlParameter("@id", invitadoID));
+            }
+            else
+            {
+                if (VerificarEntradaPreviaResidente(residenteID))
+                {
+                    MessageBox.Show("Este residente ya se encuentra dentro.", "Entrada duplicada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string insertSql = @"
+                    INSERT INTO Historial (FechaEntrada, ResidenteID)
+                    VALUES (GETDATE(), @id)";
+                DbHelper.ExecuteNonQuery(insertSql, new SqlParameter("@id", residenteID));
+
+                MessageBox.Show("Entrada de residente registrada correctamente.", "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            LimpiarPaneles();
+            ReiniciarLecturaQR();
+
+        }
+
+        private void btnSalida_Click(object sender, EventArgs e)
+        {
+            if (esInvitado)
+            {
+                if (!VerificarEntradaPreviaInvitado(invitadoID))
+                {
+                    MessageBox.Show("Este invitado no ha registrado entrada aún.", "Salida inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string updateSql = @"
+                    UPDATE Historial
+                    SET FechaSalida = GETDATE()
+                    WHERE InvitadoID = @id AND FechaSalida IS NULL";
+                DbHelper.ExecuteNonQuery(updateSql, new SqlParameter("@id", invitadoID));
+
+                MessageBox.Show("Salida de invitado registrada correctamente.", "Salida confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (!VerificarEntradaPreviaResidente(residenteID))
+                {
+                    MessageBox.Show("Este residente aún no ha entrado.", "Salida inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string updateSql = @"
+                    UPDATE Historial
+                    SET FechaSalida = GETDATE()
+                    WHERE ResidenteID = @id AND FechaSalida IS NULL";
+                DbHelper.ExecuteNonQuery(updateSql, new SqlParameter("@id", residenteID));
+
+                MessageBox.Show("Salida de residente registrada correctamente.", "Salida confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            LimpiarPaneles();
+            ReiniciarLecturaQR();
         }
     }
 }
