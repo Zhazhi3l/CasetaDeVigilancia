@@ -167,6 +167,7 @@
             this.txtQrReader.Size = new System.Drawing.Size(16, 22);
             this.txtQrReader.TabIndex = 14;
             this.txtQrReader.TextChanged += new System.EventHandler(this.txtQrReader_TextChanged);
+            this.txtQrReader.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQrReader_KeyDown);
             // 
             // groupBox1
             // 

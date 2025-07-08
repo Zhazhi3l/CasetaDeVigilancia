@@ -28,7 +28,7 @@ namespace CasetaDeVigilancia.Resources.Controles
                     (Nombre, ApellidoPaterno, ApellidoMaterno,
                      NumeroCasa, Calle, Telefono, Correo, FechaRegistro)
                 VALUES
-                    (@nombre, @apellidopaterno, @apellidomaterno, @numerocasa, @calle, @telefono, @correo, @fecharegistro)";
+                    (@nombre, @apellidopaterno, @apellidomaterno, @numerocasa, @calle, @telefono, @correo)";
 
                 // Creación de parametros SQL
                 var parametros = new[]
@@ -39,8 +39,7 @@ namespace CasetaDeVigilancia.Resources.Controles
                     new SqlParameter("@numerocasa",         nudNumeroCalle.Value),
                     new SqlParameter("@calle",              txtCalle.Text.Trim()),
                     new SqlParameter("@telefono",           txtNumTel.Text.Trim()),
-                    new SqlParameter("@correo",             txtCorreo.Text.Trim()),
-                    new SqlParameter("@fecharegistro",      DateTime.Now)
+                    new SqlParameter("@correo",             txtCorreo.Text.Trim())
                 };
 
                 // Ejecutamos la consulta

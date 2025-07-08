@@ -30,19 +30,27 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnRegresar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dgvTablaAccesos = new System.Windows.Forms.DataGridView();
-            this.btnRegresar = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnReiniciarFiltros = new System.Windows.Forms.Button();
+            this.btnAplicarFiltro = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbTipoUsuario = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.chkFiltrarFecha = new System.Windows.Forms.CheckBox();
+            this.dtpFechaFiltro = new System.Windows.Forms.DateTimePicker();
+            this.cmbTipoAcceso = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaAccesos)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -64,6 +72,21 @@
             this.panel3.Size = new System.Drawing.Size(90, 40);
             this.panel3.TabIndex = 0;
             // 
+            // btnRegresar
+            // 
+            this.btnRegresar.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnRegresar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRegresar.FlatAppearance.BorderSize = 0;
+            this.btnRegresar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegresar.Image = global::CasetaDeVigilancia.Properties.Resources.flecha_izquierda;
+            this.btnRegresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegresar.Location = new System.Drawing.Point(0, 0);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(90, 40);
+            this.btnRegresar.TabIndex = 1;
+            this.btnRegresar.UseVisualStyleBackColor = false;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.MediumAquamarine;
@@ -83,69 +106,141 @@
             this.panel4.Size = new System.Drawing.Size(800, 370);
             this.panel4.TabIndex = 8;
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.comboBox1);
-            this.panel5.Controls.Add(this.button2);
-            this.panel5.Controls.Add(this.button1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(800, 50);
-            this.panel5.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(722, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(641, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(514, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 2;
-            // 
             // dgvTablaAccesos
             // 
             this.dgvTablaAccesos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTablaAccesos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTablaAccesos.Location = new System.Drawing.Point(0, 50);
+            this.dgvTablaAccesos.Location = new System.Drawing.Point(0, 77);
             this.dgvTablaAccesos.Name = "dgvTablaAccesos";
             this.dgvTablaAccesos.RowHeadersVisible = false;
             this.dgvTablaAccesos.RowHeadersWidth = 51;
             this.dgvTablaAccesos.RowTemplate.Height = 24;
-            this.dgvTablaAccesos.Size = new System.Drawing.Size(800, 320);
+            this.dgvTablaAccesos.Size = new System.Drawing.Size(800, 293);
             this.dgvTablaAccesos.TabIndex = 1;
             // 
-            // btnRegresar
+            // panel5
             // 
-            this.btnRegresar.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.btnRegresar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRegresar.FlatAppearance.BorderSize = 0;
-            this.btnRegresar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegresar.Image = global::CasetaDeVigilancia.Properties.Resources.flecha_izquierda;
-            this.btnRegresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegresar.Location = new System.Drawing.Point(0, 0);
-            this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(90, 40);
-            this.btnRegresar.TabIndex = 1;
-            this.btnRegresar.UseVisualStyleBackColor = false;
-            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            this.panel5.BackColor = System.Drawing.Color.MintCream;
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.cmbTipoAcceso);
+            this.panel5.Controls.Add(this.dtpFechaFiltro);
+            this.panel5.Controls.Add(this.chkFiltrarFecha);
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.tableLayoutPanel1);
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Controls.Add(this.cmbTipoUsuario);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(800, 77);
+            this.panel5.TabIndex = 0;
+            // 
+            // btnReiniciarFiltros
+            // 
+            this.btnReiniciarFiltros.BackColor = System.Drawing.Color.SlateGray;
+            this.btnReiniciarFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnReiniciarFiltros.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnReiniciarFiltros.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReiniciarFiltros.Location = new System.Drawing.Point(3, 41);
+            this.btnReiniciarFiltros.Name = "btnReiniciarFiltros";
+            this.btnReiniciarFiltros.Size = new System.Drawing.Size(117, 33);
+            this.btnReiniciarFiltros.TabIndex = 1;
+            this.btnReiniciarFiltros.Text = "Reinciar";
+            this.btnReiniciarFiltros.UseVisualStyleBackColor = false;
+            this.btnReiniciarFiltros.Click += new System.EventHandler(this.btnReiniciarFiltros_Click);
+            // 
+            // btnAplicarFiltro
+            // 
+            this.btnAplicarFiltro.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAplicarFiltro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAplicarFiltro.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAplicarFiltro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAplicarFiltro.Location = new System.Drawing.Point(3, 3);
+            this.btnAplicarFiltro.Name = "btnAplicarFiltro";
+            this.btnAplicarFiltro.Size = new System.Drawing.Size(117, 32);
+            this.btnAplicarFiltro.TabIndex = 0;
+            this.btnAplicarFiltro.Text = "Aplicar";
+            this.btnAplicarFiltro.UseVisualStyleBackColor = false;
+            this.btnAplicarFiltro.Click += new System.EventHandler(this.btnAplicarFiltro_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.btnReiniciarFiltros, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnAplicarFiltro, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(677, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(123, 77);
+            this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // cmbTipoUsuario
+            // 
+            this.cmbTipoUsuario.FormattingEnabled = true;
+            this.cmbTipoUsuario.Location = new System.Drawing.Point(3, 34);
+            this.cmbTipoUsuario.Name = "cmbTipoUsuario";
+            this.cmbTipoUsuario.Size = new System.Drawing.Size(151, 24);
+            this.cmbTipoUsuario.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(151, 23);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Filtrar por Usuario:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label2.Location = new System.Drawing.Point(173, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(137, 23);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Filtrar por Fecha:";
+            // 
+            // chkFiltrarFecha
+            // 
+            this.chkFiltrarFecha.AutoSize = true;
+            this.chkFiltrarFecha.Location = new System.Drawing.Point(177, 38);
+            this.chkFiltrarFecha.Name = "chkFiltrarFecha";
+            this.chkFiltrarFecha.Size = new System.Drawing.Size(18, 17);
+            this.chkFiltrarFecha.TabIndex = 6;
+            this.chkFiltrarFecha.UseVisualStyleBackColor = true;
+            this.chkFiltrarFecha.CheckedChanged += new System.EventHandler(this.chkFiltrarFecha_CheckedChanged);
+            // 
+            // dtpFechaFiltro
+            // 
+            this.dtpFechaFiltro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFiltro.Location = new System.Drawing.Point(201, 36);
+            this.dtpFechaFiltro.Name = "dtpFechaFiltro";
+            this.dtpFechaFiltro.Size = new System.Drawing.Size(109, 22);
+            this.dtpFechaFiltro.TabIndex = 7;
+            // 
+            // cmbTipoAcceso
+            // 
+            this.cmbTipoAcceso.FormattingEnabled = true;
+            this.cmbTipoAcceso.Location = new System.Drawing.Point(325, 34);
+            this.cmbTipoAcceso.Name = "cmbTipoAcceso";
+            this.cmbTipoAcceso.Size = new System.Drawing.Size(208, 24);
+            this.cmbTipoAcceso.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label3.Location = new System.Drawing.Point(325, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(208, 23);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Filtrar por Tipo de Acceso:";
             // 
             // frmHistorialAcceso
             // 
@@ -157,11 +252,14 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmHistorialAcceso";
             this.Text = "Historial de accesos";
+            this.Load += new System.EventHandler(this.frmHistorialAcceso_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaAccesos)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -174,9 +272,16 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReiniciarFiltros;
+        private System.Windows.Forms.Button btnAplicarFiltro;
         private System.Windows.Forms.DataGridView dgvTablaAccesos;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbTipoAcceso;
+        private System.Windows.Forms.DateTimePicker dtpFechaFiltro;
+        private System.Windows.Forms.CheckBox chkFiltrarFecha;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbTipoUsuario;
     }
 }

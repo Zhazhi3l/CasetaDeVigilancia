@@ -73,13 +73,13 @@ namespace CasetaDeVigilancia.src
          * Verifica el tipo de Usuario que se encuentra en el código QR.
          * Realiza una búsqueda por ID según el tipo de Usuario.
          */
-        private async Task ProcesarQrAsync(string codigo)
+        private async Task  ProcesarQrAsync(string codigo)
         {
             // Reset de la interfaz
             LimpiarPaneles();
             try
             {
-                string[] partes = codigo.Split('|');
+                string[] partes = codigo.Split('$');
                 if (partes.Length != 2)
                 {
                     MessageBox.Show("El código QR tiene un formato inválido.", "QR no reconocido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -91,7 +91,7 @@ namespace CasetaDeVigilancia.src
 
                 if ((tipo != "RES" && tipo != "INV") || !int.TryParse(idTexto, out int id))
                 {
-                    MessageBox.Show($"El código QR no es válido. Revisa que sea del tipo RES|ID o INV|ID.", "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"El código QR no es válido. Revisa que sea del tipo RES$ID o INV$ID.", "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -276,18 +276,28 @@ namespace CasetaDeVigilancia.src
             btnSalida.Enabled = false;
         }
 
+
         private async void txtQrReader_TextChanged(object sender, EventArgs e)
         {
+            /*
+            string qr = "";
+            /*
+            if (txtQrReader.Text.Trim().Contains("\n"))
+            {
+                MessageBox.
+            }
+            
+
             if (enProceso) return;
 
-            enProceso = true;
-            txtQrReader.Enabled = false;
+            //enProceso = true;
+            //txtQrReader.Enabled = false;
 
             lblEsperaQr.Visible = false;
             lblAvisoQr.Visible = true;
             lblQrLeidoYEsperando.Visible = true;
 
-            string qr = txtQrReader.Text.Trim();
+            qr = txtQrReader.Text.Trim();
 
             if (!string.IsNullOrWhiteSpace(qr))
             {
@@ -295,6 +305,7 @@ namespace CasetaDeVigilancia.src
             }
 
             enProceso = false;
+            */
         }
 
         private void btnEntrada_Click(object sender, EventArgs e)
@@ -390,6 +401,26 @@ namespace CasetaDeVigilancia.src
 
             LimpiarPaneles();
             ReiniciarLecturaQR();
+        }
+
+        /**
+         * Como el Lector de qr da un enter cuando termina, se usa este evento para procesar el código QR.
+         */
+        private async void txtQrReader_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                lblEsperaQr.Visible = false;
+                lblAvisoQr.Visible = true;
+                lblQrLeidoYEsperando.Visible = true;
+
+                string qr = txtQrReader.Text.Trim();
+
+                if (!string.IsNullOrWhiteSpace(qr))
+                {
+                    await ProcesarQrAsync(qr);
+                }
+            }
         }
     }
 }
