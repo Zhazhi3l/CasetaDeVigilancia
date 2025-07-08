@@ -308,15 +308,20 @@ namespace CasetaDeVigilancia.src
                 }
 
                 string insertSql = @"
-                    INSERT INTO Historial (FechaEntrada, InvitadoID)
-                    VALUES (GETDATE(), @id)";
-                DbHelper.ExecuteNonQuery(insertSql, new SqlParameter("@id", invitadoID));
+                    INSERT INTO Historial (FechaEntrada, ResidenteID, InvitadoID)
+                    VALUES (GETDATE(), @residenteId, @invitadoId)";
+                DbHelper.ExecuteNonQuery(insertSql,
+                    new SqlParameter("@residenteId", residenteID),
+                    new SqlParameter("@invitadoId", invitadoID)
+                );
+
+                // Cambia estatus del QR a 'Vencido' si es de un solo uso
+                string updateSql = "UPDATE Invitado SET Estatus = @estatus WHERE InvitadoID = @id";
+                DbHelper.ExecuteNonQuery(updateSql,
+                    new SqlParameter("@estatus", "Vencido"),
+                    new SqlParameter("@id", invitadoID));
 
                 MessageBox.Show("Entrada de invitado registrada correctamente.", "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Cambiar estado a VENCIDO si se requiere (uso único)
-                string updateSql = "UPDATE Invitado SET Estatus = 'Vencido' WHERE InvitadoID = @id";
-                DbHelper.ExecuteNonQuery(updateSql, new SqlParameter("@id", invitadoID));
             }
             else
             {
@@ -326,13 +331,17 @@ namespace CasetaDeVigilancia.src
                     return;
                 }
 
-                string insertSql = @"
-                    INSERT INTO Historial (FechaEntrada, ResidenteID)
-                    VALUES (GETDATE(), @id)";
-                DbHelper.ExecuteNonQuery(insertSql, new SqlParameter("@id", residenteID));
+                string insertSql = @"INSERT INTO Historial (FechaEntrada, ResidenteID, InvitadoID) 
+                    VALUES (GETDATE(), @residenteId, @invitadoId)";
+                DbHelper.ExecuteNonQuery(insertSql,
+                    new SqlParameter("@residenteId", residenteID),
+                    new SqlParameter("@invitadoId", DBNull.Value));
 
                 MessageBox.Show("Entrada de residente registrada correctamente.", "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            btnEntrada.Enabled = false;
+            btnSalida.Enabled = false;
 
             LimpiarPaneles();
             ReiniciarLecturaQR();
@@ -350,9 +359,10 @@ namespace CasetaDeVigilancia.src
                 }
 
                 string updateSql = @"
-                    UPDATE Historial
+                    UPDATE TOP (1) Historial
                     SET FechaSalida = GETDATE()
-                    WHERE InvitadoID = @id AND FechaSalida IS NULL";
+                    WHERE InvitadoID = @id AND FechaSalida IS NULL
+                    ORDER BY FechaEntrada DESC";
                 DbHelper.ExecuteNonQuery(updateSql, new SqlParameter("@id", invitadoID));
 
                 MessageBox.Show("Salida de invitado registrada correctamente.", "Salida confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -366,13 +376,17 @@ namespace CasetaDeVigilancia.src
                 }
 
                 string updateSql = @"
-                    UPDATE Historial
+                    UPDATE TOP (1) Historial
                     SET FechaSalida = GETDATE()
-                    WHERE ResidenteID = @id AND FechaSalida IS NULL";
+                    WHERE ResidenteID = @id AND FechaSalida IS NULL
+                    ORDER BY FechaEntrada DESC";
                 DbHelper.ExecuteNonQuery(updateSql, new SqlParameter("@id", residenteID));
 
                 MessageBox.Show("Salida de residente registrada correctamente.", "Salida confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            btnEntrada.Enabled = false;
+            btnSalida.Enabled = false;
 
             LimpiarPaneles();
             ReiniciarLecturaQR();

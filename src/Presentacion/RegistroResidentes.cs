@@ -43,17 +43,19 @@ namespace CasetaDeVigilancia.src
             {
                 string sql = @"
                 INSERT INTO Residente
-                    (Nombre, ApellidoPaterno, ApellidoMaterno,
+                    (Nombre, ApellidoPaterno, ApellidoMaterno, Usuario, Password,
                      NumeroCasa, Calle, Telefono, Correo, FechaRegistro)
                 VALUES
-                    (@nombre, @apellidopaterno, @apellidomaterno, @numerocasa, @calle, @telefono, @correo, @fecharegistro)";
+                    (@nombre, @apellidopaterno, @apellidomaterno, @usuario, @password,
+                     @numerocasa, @calle, @telefono, @correo, @fecharegistro)";
 
-                // Creación de parametros SQL
                 var parametros = new[]
                 {
                     new SqlParameter("@nombre",             txtNombres.Text.Trim()),
                     new SqlParameter("@apellidopaterno",    txtApllPat.Text.Trim()),
                     new SqlParameter("@apellidomaterno",    txtApllMat.Text.Trim()),
+                    new SqlParameter("@usuario",            txtUsuario.Text.Trim()),
+                    new SqlParameter("@password",           txtContrasena.Text.Trim()),
                     new SqlParameter("@numerocasa",         nudNumeroCalle.Value),
                     new SqlParameter("@calle",              txtCalle.Text.Trim()),
                     new SqlParameter("@telefono",           txtNumTel.Text.Trim()),
@@ -92,6 +94,7 @@ namespace CasetaDeVigilancia.src
          */
         private bool ResidenteYaExiste(string nombre, string apPat, string apMat) /*, int numeroCasa*/ // Comentado porque no se determina aún si habitan más personas en la misma casa.
         {
+            //Nota: Considerar Utilizar el campo usuario para verificar si ya existe un residente.
             string sql = @"
                 SELECT COUNT(*) 
                 FROM Residente
