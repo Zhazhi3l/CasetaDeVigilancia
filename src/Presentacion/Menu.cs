@@ -72,7 +72,7 @@ namespace CasetaDeVigilancia
 
         private void btnSesionGuardia_Click(object sender, EventArgs e)
         {
-            frmAdminResidentes administrarres = new frmAdminResidentes();
+            frmAdminUsuarios administrarres = new frmAdminUsuarios();
             administrarres.ShowDialog();
         }
     }

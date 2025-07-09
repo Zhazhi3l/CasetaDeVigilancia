@@ -14,52 +14,116 @@ namespace CasetaDeVigilancia.Resources.Controles
 {
     public partial class DatosDeUsuario : UserControl
     {
+        private int? residenteID = null;
+        private bool esEdicion = false;
+
         public DatosDeUsuario()
         {
             InitializeComponent();
+            this.btnEditarUsuario.Click += new System.EventHandler(this.btnEditarUsuario_Click);
         }
 
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
-            if (validarCasillas())
+            if (!validarCasillas()) return;
+
+            if (UsuarioYaExiste(txtUsuario.Text.Trim(), residenteID))
             {
-                string sql = @"
-                Select Residente
-                    (Nombre, ApellidoPaterno, ApellidoMaterno,
-                     NumeroCasa, Calle, Telefono, Correo, FechaRegistro)
-                VALUES
-                    (@nombre, @apellidopaterno, @apellidomaterno, @numerocasa, @calle, @telefono, @correo)";
+                MessageBox.Show("Este nombre de usuario ya está en uso. Por favor elige otro.",
+                                "Usuario duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                // Creación de parametros SQL
-                var parametros = new[]
-                {
-                    new SqlParameter("@nombre",             txtNombres.Text.Trim()),
-                    new SqlParameter("@apellidopaterno",    txtApllPat.Text.Trim()),
-                    new SqlParameter("@apellidomaterno",    txtApllMat.Text.Trim()),
-                    new SqlParameter("@numerocasa",         nudNumeroCalle.Value),
-                    new SqlParameter("@calle",              txtCalle.Text.Trim()),
-                    new SqlParameter("@telefono",           txtNumTel.Text.Trim()),
-                    new SqlParameter("@correo",             txtCorreo.Text.Trim())
-                };
+            try
+            {
+                string sql;
+                SqlParameter[] parametros;
 
-                // Ejecutamos la consulta
-                try
+                if (esEdicion && residenteID != null)
                 {
-                    // Ejecutamos INSERT:
-                    int filas = DbHelper.ExecuteNonQuery(sql, parametros);
-                    if (filas > 0)
-                        MessageBox.Show("¡Residente registrado correctamente!");
-                    else
-                        MessageBox.Show("No se insertó ningún registro.");
+                    // UPDATE
+                    sql = @"
+                        UPDATE Residente SET
+                            Nombre = @nombre,
+                            ApellidoPaterno = @apellidopaterno,
+                            ApellidoMaterno = @apellidomaterno,
+                            NumeroCasa = @numerocasa,
+                            Calle = @calle,
+                            Telefono = @telefono,
+                            Correo = @correo,
+                            Usuario = @usuario,
+                            Password = @password
+                        WHERE ResidenteID = @id";
+
+                    parametros = new[]
+                    {
+                        new SqlParameter("@nombre",             txtNombres.Text.Trim()),
+                        new SqlParameter("@apellidopaterno",    txtApllPat.Text.Trim()),
+                        new SqlParameter("@apellidomaterno",    txtApllMat.Text.Trim()),
+                        new SqlParameter("@numerocasa",         nudNumeroCalle.Value),
+                        new SqlParameter("@calle",              txtCalle.Text.Trim()),
+                        new SqlParameter("@telefono",           txtNumTel.Text.Trim()),
+                        new SqlParameter("@correo",             txtCorreo.Text.Trim()),
+                        new SqlParameter("@usuario",            txtUsuario.Text.Trim()),
+                        new SqlParameter("@password",           txtContrasena.Text.Trim()),
+                        new SqlParameter("@id",                 residenteID)
+                    };
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Error al registrar: " + ex.Message);
+                    // INSERT
+                    sql = @"
+                        INSERT INTO Residente 
+                            (Nombre, ApellidoPaterno, ApellidoMaterno, Usuario, Password,
+                             NumeroCasa, Calle, Telefono, Correo)
+                        VALUES
+                            (@nombre, @apellidopaterno, @apellidomaterno, @usuario, @password,
+                             @numerocasa, @calle, @telefono, @correo)";
+
+                    parametros = new[]
+                    {
+                        new SqlParameter("@nombre",             txtNombres.Text.Trim()),
+                        new SqlParameter("@apellidopaterno",    txtApllPat.Text.Trim()),
+                        new SqlParameter("@apellidomaterno",    txtApllMat.Text.Trim()),
+                        new SqlParameter("@usuario",            txtUsuario.Text.Trim()),
+                        new SqlParameter("@password",           txtContrasena.Text.Trim()),
+                        new SqlParameter("@numerocasa",         nudNumeroCalle.Value),
+                        new SqlParameter("@calle",              txtCalle.Text.Trim()),
+                        new SqlParameter("@telefono",           txtNumTel.Text.Trim()),
+                        new SqlParameter("@correo",             txtCorreo.Text.Trim())
+                    };
                 }
+
+                int filas = DbHelper.ExecuteNonQuery(sql, parametros);
+                string msg = esEdicion ? "¡Residente actualizado correctamente!" : "¡Residente registrado correctamente!";
+                MessageBox.Show(msg, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 limpiarCampos();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al procesar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        private bool UsuarioYaExiste(string nuevoUsuario, int? actualID = null)
+        {
+            string sql = @"
+                SELECT COUNT(*) 
+                FROM Residente 
+                WHERE Usuario = @usuario
+                AND (@id IS NULL OR ResidenteID != @id)"; // Ignora el mismo usuario en edición
+
+            var parametros = new[]
+            {
+                new SqlParameter("@usuario", nuevoUsuario),
+                new SqlParameter("@id", actualID ?? (object)DBNull.Value)
+            };
+
+            int conteo = Convert.ToInt32(DbHelper.ExecuteScalar(sql, parametros));
+            return conteo > 0;
+        }
+
 
         private void limpiarCampos()
         {
@@ -120,5 +184,22 @@ namespace CasetaDeVigilancia.Resources.Controles
             }
             return true;
         }
+
+        public void InicializarParaEdicion(DataRow fila)
+        {
+            esEdicion = true;
+            residenteID = Convert.ToInt32(fila["ResidenteID"]);
+
+            txtNombres.Text = fila["Nombre"].ToString();
+            txtApllPat.Text = fila["ApellidoPaterno"].ToString();
+            txtApllMat.Text = fila["ApellidoMaterno"].ToString();
+            nudNumeroCalle.Value = Convert.ToDecimal(fila["NumeroCasa"]);
+            txtCalle.Text = fila["Calle"].ToString();
+            txtNumTel.Text = fila["Telefono"].ToString();
+            txtCorreo.Text = fila["Correo"].ToString();
+            txtUsuario.Text = fila["Usuario"].ToString();
+        }
+
+
     }
 }

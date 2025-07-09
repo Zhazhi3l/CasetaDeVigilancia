@@ -192,6 +192,12 @@
     <Compile Include="src\Presentacion\AdministrarResidentes\AdminResidentes.Designer.cs">
       <DependentUpon>AdminResidentes.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Presentacion\AdministrarResidentes\EditarResidente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Presentacion\AdministrarResidentes\EditarResidente.Designer.cs">
+      <DependentUpon>EditarResidente.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Presentacion\HistorialAcceso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Presentacion\AdministrarResidentes\AdminResidentes.resx">
       <DependentUpon>AdminResidentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Presentacion\AdministrarResidentes\EditarResidente.resx">
+      <DependentUpon>EditarResidente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Presentacion\HistorialAcceso.resx">
       <DependentUpon>HistorialAcceso.cs</DependentUpon>

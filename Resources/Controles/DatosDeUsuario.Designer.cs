@@ -67,7 +67,7 @@
             this.btnEditarUsuario.Name = "btnEditarUsuario";
             this.btnEditarUsuario.Size = new System.Drawing.Size(242, 45);
             this.btnEditarUsuario.TabIndex = 16;
-            this.btnEditarUsuario.Text = "Editar Usuario";
+            this.btnEditarUsuario.Text = "Guardar cambios";
             this.btnEditarUsuario.UseVisualStyleBackColor = false;
             this.btnEditarUsuario.Click += new System.EventHandler(this.btnEditarUsuario_Click);
             // 
