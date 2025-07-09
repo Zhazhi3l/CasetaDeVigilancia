@@ -71,6 +71,7 @@
             this.btnRegresar.Size = new System.Drawing.Size(89, 40);
             this.btnRegresar.TabIndex = 0;
             this.btnRegresar.UseVisualStyleBackColor = false;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // panel1
             // 

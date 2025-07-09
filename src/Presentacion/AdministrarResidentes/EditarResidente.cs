@@ -19,6 +19,7 @@ namespace CasetaDeVigilancia.src.Presentacion.AdministrarResidentes
         public frmEditarResidente(int index, DataTable tabla)
         {
             InitializeComponent();
+            Image original = Properties.Resources.flecha_izquierda; Image redimensionada = new Bitmap(original, new Size(20, 20)); btnRegresar.Image = redimensionada; btnRegresar.ImageAlign = ContentAlignment.MiddleLeft;
             filaResidente = tabla.Rows[index];
         }
 
@@ -39,6 +40,11 @@ namespace CasetaDeVigilancia.src.Presentacion.AdministrarResidentes
             };
 
 
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
