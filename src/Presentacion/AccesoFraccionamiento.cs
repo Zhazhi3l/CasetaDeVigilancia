@@ -1,5 +1,5 @@
 ﻿using CasetaDeVigilancia.src.Datos;
-using CasetaDeVigilancia.src.Datos.Datos.Modelos;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +18,6 @@ namespace CasetaDeVigilancia.src
         private int invitadoID;
         private int residenteID;
         private bool esInvitado;
-        private bool enProceso = false;
 
         public frmAccesoFraccionamiento()
         {

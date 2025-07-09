@@ -177,9 +177,6 @@
       <DependentUpon>DatosDeUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Conexiones\DbHelper.cs" />
-    <Compile Include="src\Datos\Modelos\HistorialAcceso.cs" />
-    <Compile Include="src\Datos\Modelos\Invitado.cs" />
-    <Compile Include="src\Datos\Modelos\Residente.cs" />
     <Compile Include="src\Presentacion\AccesoFraccionamiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,12 +200,6 @@
     </Compile>
     <Compile Include="src\Presentacion\HistorialAcceso.Designer.cs">
       <DependentUpon>HistorialAcceso.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\Presentacion\ListaResidentes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Presentacion\ListaResidentes.Designer.cs">
-      <DependentUpon>ListaResidentes.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Presentacion\Menu.cs">
       <SubType>Form</SubType>
@@ -238,9 +229,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Presentacion\HistorialAcceso.resx">
       <DependentUpon>HistorialAcceso.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Presentacion\ListaResidentes.resx">
-      <DependentUpon>ListaResidentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Presentacion\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -290,6 +278,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
