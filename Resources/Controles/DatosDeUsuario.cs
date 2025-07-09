@@ -14,6 +14,7 @@ namespace CasetaDeVigilancia.Resources.Controles
 {
     public partial class DatosDeUsuario : UserControl
     {
+        public event EventHandler EdicionFinalizada;
         private int? residenteID = null;
         private bool esEdicion = false;
 
@@ -97,6 +98,8 @@ namespace CasetaDeVigilancia.Resources.Controles
                 int filas = DbHelper.ExecuteNonQuery(sql, parametros);
                 string msg = esEdicion ? "¡Residente actualizado correctamente!" : "¡Residente registrado correctamente!";
                 MessageBox.Show(msg, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                EdicionFinalizada?.Invoke(this, EventArgs.Empty);
 
                 limpiarCampos();
             }

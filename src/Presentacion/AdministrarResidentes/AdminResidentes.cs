@@ -109,9 +109,26 @@ namespace CasetaDeVigilancia.src.Presentacion
 
         private void btnEditarResidente_Click(object sender, EventArgs e)
         {
-            int filaSeleccionada = dgvTablaResidentes.CurrentRow.Index;
-            frmEditarResidente frm = new frmEditarResidente(filaSeleccionada, (DataTable)dgvTablaResidentes.DataSource);
-            frm.FormClosed += (s, args) => _ = CargarResidentesAsync(); // recarga al cerrar
+            // Validar que haya una fila activa
+            if (dgvTablaResidentes.CurrentRow == null || dgvTablaResidentes.CurrentRow.Index < 0)
+            {
+                MessageBox.Show("Por favor selecciona un residente antes de editar.", "Selección requerida",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int filaIndex = dgvTablaResidentes.CurrentRow.Index;
+            DataTable tabla = dgvTablaResidentes.DataSource as DataTable;
+
+            if (tabla == null || filaIndex >= tabla.Rows.Count)
+            {
+                MessageBox.Show("No se pudo obtener la información del residente.", "Error de datos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            frmEditarResidente frm = new frmEditarResidente(filaIndex, tabla);
+            frm.FormClosed += (s, args) => _ = CargarResidentesAsync();
             frm.ShowDialog();
         }
     }

@@ -95,13 +95,16 @@
             // 
             // dgvTablaResidentes
             // 
+            this.dgvTablaResidentes.AllowUserToAddRows = false;
             this.dgvTablaResidentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTablaResidentes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTablaResidentes.Location = new System.Drawing.Point(0, 0);
             this.dgvTablaResidentes.Name = "dgvTablaResidentes";
+            this.dgvTablaResidentes.ReadOnly = true;
             this.dgvTablaResidentes.RowHeadersVisible = false;
             this.dgvTablaResidentes.RowHeadersWidth = 51;
             this.dgvTablaResidentes.RowTemplate.Height = 24;
+            this.dgvTablaResidentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTablaResidentes.Size = new System.Drawing.Size(600, 370);
             this.dgvTablaResidentes.TabIndex = 0;
             // 
@@ -127,7 +130,6 @@
             // 
             this.btnEditarResidente.BackColor = System.Drawing.Color.LightSeaGreen;
             this.btnEditarResidente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEditarResidente.Enabled = false;
             this.btnEditarResidente.FlatAppearance.BorderSize = 0;
             this.btnEditarResidente.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarResidente.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -143,7 +145,6 @@
             // 
             this.btnEliminarResidente.BackColor = System.Drawing.Color.IndianRed;
             this.btnEliminarResidente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEliminarResidente.Enabled = false;
             this.btnEliminarResidente.FlatAppearance.BorderSize = 0;
             this.btnEliminarResidente.Font = new System.Drawing.Font("Segoe UI", 13.8F);
             this.btnEliminarResidente.ForeColor = System.Drawing.SystemColors.ControlLightLight;

@@ -102,6 +102,7 @@
             this.datosDeUsuario1.Name = "datosDeUsuario1";
             this.datosDeUsuario1.Size = new System.Drawing.Size(514, 364);
             this.datosDeUsuario1.TabIndex = 0;
+            this.datosDeUsuario1.Load += new System.EventHandler(this.datosDeUsuario1_Load);
             // 
             // frmEditarResidente
             // 
@@ -114,6 +115,7 @@
             this.Name = "frmEditarResidente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edición de Residentes";
+            this.Load += new System.EventHandler(this.frmEditarResidente_Load);
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
