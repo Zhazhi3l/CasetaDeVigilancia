@@ -52,9 +52,9 @@
             label1.ForeColor = System.Drawing.Color.DarkGreen;
             label1.Location = new System.Drawing.Point(32, 160);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(314, 124);
+            label1.Size = new System.Drawing.Size(306, 124);
             label1.TabIndex = 5;
-            label1.Text = "Bienvenido a:\r\nPuerta segura";
+            label1.Text = "Bienvenido a:\r\nSentry Ctl";
             // 
             // panel1
             // 

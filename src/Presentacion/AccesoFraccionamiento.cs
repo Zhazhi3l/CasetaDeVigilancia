@@ -369,10 +369,15 @@ namespace CasetaDeVigilancia.src
                 }
 
                 string updateSql = @"
-                    UPDATE TOP (1) Historial
-                    SET FechaSalida = GETDATE()
-                    WHERE InvitadoID = @id AND FechaSalida IS NULL
-                    ORDER BY FechaEntrada DESC";
+                    WITH UltimaEntrada AS (
+                        SELECT TOP 1 *
+                        FROM Historial
+                        WHERE InvitadoID = @id AND FechaSalida IS NULL
+                        ORDER BY FechaEntrada DESC
+                    )
+                    UPDATE UltimaEntrada
+                    SET FechaSalida = GETDATE();";
+
                 DbHelper.ExecuteNonQuery(updateSql, new SqlParameter("@id", invitadoID));
 
                 MessageBox.Show("Salida de invitado registrada correctamente.", "Salida confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -386,10 +391,15 @@ namespace CasetaDeVigilancia.src
                 }
 
                 string updateSql = @"
-                    UPDATE TOP (1) Historial
-                    SET FechaSalida = GETDATE()
-                    WHERE ResidenteID = @id AND FechaSalida IS NULL
-                    ORDER BY FechaEntrada DESC";
+                    WITH UltimaEntrada AS (
+                        SELECT TOP 1 *
+                        FROM Historial
+                        WHERE ResidenteID = @id AND FechaSalida IS NULL
+                        ORDER BY FechaEntrada DESC
+                    )
+                    UPDATE UltimaEntrada
+                    SET FechaSalida = GETDATE();";
+
                 DbHelper.ExecuteNonQuery(updateSql, new SqlParameter("@id", residenteID));
 
                 MessageBox.Show("Salida de residente registrada correctamente.", "Salida confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);

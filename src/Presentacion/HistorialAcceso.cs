@@ -169,5 +169,10 @@ namespace CasetaDeVigilancia.src.Presentacion
 
             await CargarHistorialFiltradoAsync();
         }
+
+        private void dgvTablaAccesos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
